@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VistaUsuarioComponent
   ],
   imports: [
     BrowserModule
