@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
+import { HistorietaComponent } from './historieta/historieta.component';
 
 
 
@@ -16,7 +17,8 @@ import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
     AppComponent,
 
     NavBarComponent,
-    VistaUsuarioComponent
+    VistaUsuarioComponent,
+    HistorietaComponent
 
   ],
   imports: [
