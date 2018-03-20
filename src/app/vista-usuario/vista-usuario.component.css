@@ -1,0 +1,9 @@
+#contenedor_usuario{
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(68, 46, 31);
+    display: inline-block;
+}
+#card{
+    display: inline;
+}
