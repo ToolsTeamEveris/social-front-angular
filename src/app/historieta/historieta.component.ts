@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from '../Entidades/post';
 
 @Component({
   selector: 'app-historieta',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorietaComponent implements OnInit {
 
+  @Input() post: Post;
+  
   constructor() { }
 
   ngOnInit() {
