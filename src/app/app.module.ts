@@ -15,8 +15,7 @@ import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
   declarations: [
     AppComponent,
 
-    NavBarComponent
-
+    NavBarComponent,
     VistaUsuarioComponent
 
   ],
