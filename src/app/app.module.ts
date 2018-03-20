@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 
@@ -20,7 +21,8 @@ import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
 
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [PersonaServiceService],
   bootstrap: [AppComponent]
