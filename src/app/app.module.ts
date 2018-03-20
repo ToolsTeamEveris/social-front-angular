@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
+import { PublicarHistorietaComponent } from './publicar-historieta/publicar-historieta.component';
 
 
 
@@ -15,9 +16,11 @@ import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
   declarations: [
     AppComponent,
 
-    NavBarComponent
+    NavBarComponent,
 
-    VistaUsuarioComponent
+    VistaUsuarioComponent,
+
+    PublicarHistorietaComponent
 
   ],
   imports: [

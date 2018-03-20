@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PersonaServiceService } from '../Services/persona-service.service';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
@@ -13,13 +13,12 @@ export class VistaUsuarioComponent implements OnInit {
 
   persona: Persona;
 
-  constructor(private pService:PersonaServiceService) { 
-    
+  constructor(private pService: PersonaServiceService) {
   }
   ngOnInit() {
-     this.pService.getPersona(1).subscribe(res=> {
+     this.pService.getPersona(1).subscribe(res => {
        this.persona = res;
-     })
+     });
   }
 
 }
