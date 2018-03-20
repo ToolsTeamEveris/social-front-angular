@@ -5,5 +5,5 @@ export interface Post {
     user: Persona;
     created_at: Date;
     content: string;
-    like: Like;
+    like: string;
 }

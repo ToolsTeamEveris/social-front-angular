@@ -3,8 +3,8 @@
   <div class="card-body">
 
     <div class="row">
-      <h3 class="col-md-6" id="NombreUsuario">{{post.user.name}}} {{post.user.surname}}</h3>
-      <h3 class="text-right col-md-6">{{post.created_at}}</h3>
+      <h3 class="col-md-6" id="NombreUsuario">{{post.user.name}} {{post.user.surname}}</h3>
+      <h3 class="text-right col-md-6">{{post.created_at | date:'dd/MM/yyyy'}}</h3>
 
     </div>
     <div id="fotoMensaje">
