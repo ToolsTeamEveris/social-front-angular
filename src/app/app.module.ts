@@ -20,7 +20,7 @@ import { ContenedorHistorietasComponent } from './contenedor-historietas/contene
     AppComponent,
     NavBarComponent,
     VistaUsuarioComponent,
-    PublicarHistorietaComponent
+    PublicarHistorietaComponent,
     VistaUsuarioComponent,
     HistorietaComponent,
     ContenedorHistorietasComponent
