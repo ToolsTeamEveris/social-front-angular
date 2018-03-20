@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publicar-historieta.component.css']
 })
 export class PublicarHistorietaComponent implements OnInit {
+  historia = '';
 
   constructor() { }
+
+  publicarHistorieta(historieta) {
+  }
 
   ngOnInit() {
   }

@@ -1,0 +1,47 @@
+.panel {
+  margin: 25px;
+  background: transparent;
+  border: solid;
+  border-width: 1px;
+}
+
+.panel-body {
+  background: white;
+  height: 250px;
+  background: transparent;
+  padding-top: 15px;
+}
+
+.panel-heading {
+  position: relative;
+  top: -15px;
+  background: rgb(229, 206, 147);
+  width: 80px;
+  left: 5px;
+}
+
+#historieta{
+  width: 95%;
+  height: 70%;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  padding: 50px;
+  text-align: center;
+  resize: none;
+}
+
+.btn{
+  position: relative;
+  left: 340px;
+  background-color: tomato;
+  border-color: white;
+}
+
+.btn:hover {
+  background-color: rgb(255, 0, 0);
+  border-color: white;
+}
+
+.btn:disabled {
+  background-color: grey;
+}
