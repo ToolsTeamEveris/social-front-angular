@@ -22,6 +22,7 @@ import { PublicarHistorietaComponent } from './publicar-historieta/publicar-hist
 
     PublicarHistorietaComponent
 
+
   ],
   imports: [
     BrowserModule,
