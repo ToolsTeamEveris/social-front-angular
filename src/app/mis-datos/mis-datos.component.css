@@ -1,0 +1,17 @@
+#formulario {
+  margin-top: 25px;
+  background: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+#newFile {
+  cursor: pointer;
+}
+#lblFile {
+  text-align: left;
+}
+
+.custom-file {
+  background: wheat;
+}
