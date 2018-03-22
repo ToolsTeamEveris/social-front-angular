@@ -20,6 +20,7 @@ import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contene
 import { MisDatosComponent } from './mis-datos/mis-datos.component';
 import { MisCosasComponent } from './mis-cosas/mis-cosas.component';
 import { BuscadorColeguitasComponent } from './buscador-coleguitas/buscador-coleguitas.component';
+import { InrfoColegaComponent } from './inrfo-colega/inrfo-colega.component';
 
 
 
@@ -39,7 +40,8 @@ import { BuscadorColeguitasComponent } from './buscador-coleguitas/buscador-cole
     ContenedorColeguillasComponent,
     MisDatosComponent,
     MisCosasComponent,
-    BuscadorColeguitasComponent
+    BuscadorColeguitasComponent,
+    InrfoColegaComponent
   ],
   imports: [
     BrowserModule,
