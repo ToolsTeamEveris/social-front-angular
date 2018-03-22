@@ -11,27 +11,21 @@ import { Observable } from 'rxjs/Observable';
 export class ContenedorColeguillasComponent implements OnInit {
 
   user: Persona;
-  coleguillas: Persona[];
-  coleguillasPendientes: Persona[];
+  coleguillas: Persona[] = [];
+  coleguillasPendientes: Persona[] = [];
 
   constructor(private perService: PersonaServiceService) { }
 
   ngOnInit() {
-    this.getColeguillasPendientes();
-    this.getColeguillas();
+    this._getColeguillasPendientes();
+    this._getColeguillas();
   }
 
-  getColeguillas(){
-    this.perService.getPersons().subscribe(
-      res => {
-        this.coleguillas = res;
-      });
+  private _getColeguillas(){
+    this.perService.getPersons().subscribe((res: Persona[]) => this.coleguillas = res);
   }
-  getColeguillasPendientes(){
-    this.perService.getPersonPen().subscribe(
-      res => {
-        this.coleguillasPendientes = res;
-      });
+  private _getColeguillasPendientes(){
+    this.perService.getPersonPen().subscribe((res: Persona[]) => this.coleguillasPendientes = res);
   }
   getUser(){
     this.perService.getLoggedUser().subscribe(

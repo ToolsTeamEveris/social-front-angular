@@ -10,7 +10,7 @@ export class PublicarHistorietaComponent implements OnInit {
 
   constructor() { }
 
-  publicarHistorieta(historieta) {
+  publicarHistorieta() {
   }
 
   ngOnInit() {

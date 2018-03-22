@@ -1,10 +1,10 @@
 <div>
   <ul>
-    <li *ngFor="let item of coleguillas">
-      <app-coleguilla [col]="item"></app-coleguilla>
+    <li *ngFor="let coleguilla of coleguillas">
+      <app-coleguilla [col]="coleguilla"></app-coleguilla>
     </li>
-    <li *ngFor="let item of coleguillasPendientes">
-      <app-coleguilla-add [col]="item"></app-coleguilla-add>
+    <li *ngFor="let coleguillaPendiente of coleguillasPendientes">
+      <app-coleguilla-add [col]="coleguillaPendiente"></app-coleguilla-add>
     </li>
   </ul>
 </div>

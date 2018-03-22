@@ -8,7 +8,7 @@ import { Persona } from '../Entidades/persona';
 })
 export class ColeguillaAddComponent implements OnInit {
 
-  @Input() col:Persona;
+  @Input() col: Persona;
   
   constructor() { }
 

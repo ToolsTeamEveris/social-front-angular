@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../Entidades/persona';
 import { PersonaServiceService } from '../Services/persona-service.service';
 import { Observable } from 'rxjs/Observable';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-mis-datos',
