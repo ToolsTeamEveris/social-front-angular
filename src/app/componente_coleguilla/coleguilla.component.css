@@ -1,0 +1,41 @@
+
+.contColeguilla{
+    height: 70px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(71, 155, 38);
+}
+.contColeguilla div{
+    padding:0;
+}
+.contColeguilla span, .contColeguilla a{
+    line-height: 70px;
+}
+.contColeguilla a{
+    margin: 19px 0px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    position:relative;
+}
+.contColeguilla a svg{
+    display:block;
+    width:32px;
+    height:32px;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.imgColeguilla{
+    height: 100%;
+    padding: 0px;
+}
+.imgColeguilla img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

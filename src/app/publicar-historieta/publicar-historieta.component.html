@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-body h-100">
+    <textarea class="form-control"
+      [(ngModel)]="historia" id="historieta" ng-minlength="1"
+      maxlength="140" ng-maxlength="140"
+      rows="2"></textarea>
+    <button type="button" class="btn btn-primary float-sm-right"
+      (click)="publicarHistorieta()" [disabled]="historia.length == 0">
+        Publicar Historieta
+    </button>
+  </div>
+</div>

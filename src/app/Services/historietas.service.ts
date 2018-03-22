@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Post } from '../Entidades/post';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
-import "rxjs/add/observable/of";
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class HistorietasService {
