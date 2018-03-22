@@ -17,7 +17,7 @@ export class VistaUsuarioComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.pService.getPersona(1).subscribe(res => {
+     this.pService.getPerson(1).subscribe(res => {
        this.persona = res;
      });
   }

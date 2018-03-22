@@ -14,6 +14,9 @@ import { PublicarHistorietaComponent } from './publicar-historieta/publicar-hist
 import { HistorietaComponent } from './historieta/historieta.component';
 import { ContenedorHistorietasComponent } from './contenedor-historietas/contenedor-historietas.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
+import { ColeguillaComponent } from './componente_coleguilla/coleguilla.component';
+import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.component';
+import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
 
 
 
@@ -26,7 +29,10 @@ import { MisHistorietasComponent } from './mis-historietas/mis-historietas.compo
     VistaUsuarioComponent,
     HistorietaComponent,
     ContenedorHistorietasComponent,
-    MisHistorietasComponent
+    MisHistorietasComponent,
+    ColeguillaComponent,
+    ColeguillaAddComponent,
+    ContenedorColeguillasComponent
   ],
   imports: [
     BrowserModule,

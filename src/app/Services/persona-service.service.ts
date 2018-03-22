@@ -13,10 +13,27 @@ export class PersonaServiceService {
     picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
   }
 
-  constructor() { }
+  personas: Persona[] = [this.persona];
 
-  getPersona(id: number): Observable<Persona>{
+  constructor() { }
+  //obtiene una persona por id
+  getPerson(id: number): Observable<Persona>{
       return Observable.of(this.persona);
   }
+  
+  //Obtener Usuario Logueado
+  getLoggedUser(){
+    return Observable.of(this.persona);
+  }
+  //Obtiene todas las personas
+  getPersons(): Observable<Persona[]>{
+    return Observable.of(this.personas);
+  }
+  
+  //Obtener amigos Pendientes
+  getPersonPen(): Observable<Persona[]>{
+    return Observable.of(this.personas);
+  }
+  
 
 }
