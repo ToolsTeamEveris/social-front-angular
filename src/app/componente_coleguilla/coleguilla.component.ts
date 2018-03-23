@@ -9,7 +9,7 @@ import { Persona } from '../Entidades/persona';
 export class ColeguillaComponent implements OnInit {
 
   @Input() col: Persona;
-  
+
   constructor() { }
 
   ngOnInit() {

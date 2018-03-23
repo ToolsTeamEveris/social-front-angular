@@ -1,14 +1,14 @@
-<form id="formulario">
+<form [formGroup]="personalData" id="formulario">
   <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Nombre:</label>
-    <div class="col-sm-10">
-      <input class="form-control col-sm-10" [formControl]="name" (keyup)="updateName()" placeholder="Modifica tu nombre">
+    <label class="col-4 col-form-label">Nombre:</label>
+    <div class="col-8">
+      <input class="form-control col-10" formControlName="name" (keyup)="updateName()" placeholder="Modifica tu nombre">
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Apellidos:</label>
-    <div class="col-sm-10">
-      <input class="form-control col-sm-10" [formControl]="surname" (keyup)="updateSurname()" placeholder="Modifica tu apellido">
+    <label class="col-4 col-form-label">Apellidos:</label>
+    <div class="col-8">
+      <input class="form-control col-10" formControlName="surname" (keyup)="updateSurname()" placeholder="Modifica tu apellido">
     </div>
   </div>
   <div class="container">
@@ -16,9 +16,11 @@
       <input type="file" class="custom-file-input" id="newFile"
          (change)="updatePicture($event)"
         aria-describedby="fileHelp"
-        accept="image/*">
-      <label class="custom-file-label col-sm-12" id="lblFile" for="newFile" >Modifica tu foto
-      </label> 
+
+        accept="image/*" formControlName="picture">
+      <label class="custom-file-label col-12 col-form-label" id="lblFile" for="newFile">Modifica tu foto
+      </label>
+
     </div>
   </div>
 </form>

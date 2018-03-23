@@ -19,8 +19,13 @@ import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.componen
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
 import { MisDatosComponent } from './mis-datos/mis-datos.component';
 import { MisCosasComponent } from './mis-cosas/mis-cosas.component';
+<<<<<<< HEAD
 import { BuscadorColeguitasComponent } from './buscador-coleguitas/buscador-coleguitas.component';
 import { InrfoColegaComponent } from './inrfo-colega/inrfo-colega.component';
+=======
+import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
+import { BuscadorColegasComponent } from './buscador-colegas/buscador-colegas.component';
+>>>>>>> f8ada2af69f99b50e25212704b1fe31e3aeabe34
 
 
 
@@ -40,8 +45,13 @@ import { InrfoColegaComponent } from './inrfo-colega/inrfo-colega.component';
     ContenedorColeguillasComponent,
     MisDatosComponent,
     MisCosasComponent,
+<<<<<<< HEAD
     BuscadorColeguitasComponent,
     InrfoColegaComponent
+=======
+    MisColegasComponent,
+    BuscadorColegasComponent
+>>>>>>> f8ada2af69f99b50e25212704b1fe31e3aeabe34
   ],
   imports: [
     BrowserModule,
@@ -51,6 +61,7 @@ import { InrfoColegaComponent } from './inrfo-colega/inrfo-colega.component';
       [
         {path: 'principal', component: MisHistorietasComponent},
         {path: 'misCosas', component: MisCosasComponent},
+        {path: 'misColegas', component: MisColegasComponent},
         {path: '', redirectTo: '/principal', pathMatch: 'full'},
         {path: '*', redirectTo: '/principal', pathMatch: 'full'}
       ]

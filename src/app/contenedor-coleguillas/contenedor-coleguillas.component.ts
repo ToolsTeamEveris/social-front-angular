@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Persona } from '../Entidades/persona';
 import { PersonaServiceService } from '../Services/persona-service.service';
 import { Observable } from 'rxjs/Observable';
@@ -17,22 +17,29 @@ export class ContenedorColeguillasComponent implements OnInit {
   constructor(private perService: PersonaServiceService) { }
 
   ngOnInit() {
-    this._getColeguillasPendientes();
-    this._getColeguillas();
+    this.getColeguillasPendientes();
+    this.getColeguillas();
   }
 
-  private _getColeguillas(){
-    this.perService.getPersons().subscribe((res: Persona[]) => this.coleguillas = res);
+  getColeguillas() {
+    this.perService.getPersons().subscribe(
+      res => {
+        this.coleguillas = res;
+      });
   }
-  private _getColeguillasPendientes(){
-    this.perService.getPersonPen().subscribe((res: Persona[]) => this.coleguillasPendientes = res);
+  getColeguillasPendientes() {
+    this.perService.getPersonPen().subscribe(
+      res => {
+        this.coleguillasPendientes = res;
+      });
+
   }
-  getUser(){
+  getUser() {
     this.perService.getLoggedUser().subscribe(
       res => {
         this.user = res;
       }
-    )
+    );
   }
 
 }
