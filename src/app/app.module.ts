@@ -19,13 +19,11 @@ import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.componen
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
 import { MisDatosComponent } from './mis-datos/mis-datos.component';
 import { MisCosasComponent } from './mis-cosas/mis-cosas.component';
-<<<<<<< HEAD
-import { BuscadorColeguitasComponent } from './buscador-coleguitas/buscador-coleguitas.component';
+
 import { InrfoColegaComponent } from './inrfo-colega/inrfo-colega.component';
-=======
+
 import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
 import { BuscadorColegasComponent } from './buscador-colegas/buscador-colegas.component';
->>>>>>> f8ada2af69f99b50e25212704b1fe31e3aeabe34
 
 
 
@@ -45,13 +43,9 @@ import { BuscadorColegasComponent } from './buscador-colegas/buscador-colegas.co
     ContenedorColeguillasComponent,
     MisDatosComponent,
     MisCosasComponent,
-<<<<<<< HEAD
-    BuscadorColeguitasComponent,
-    InrfoColegaComponent
-=======
+    InrfoColegaComponent,
     MisColegasComponent,
     BuscadorColegasComponent
->>>>>>> f8ada2af69f99b50e25212704b1fe31e3aeabe34
   ],
   imports: [
     BrowserModule,
