@@ -9,7 +9,7 @@ import { Post } from '../Entidades/post';
 export class HistorietaComponent implements OnInit {
 
   @Input() post: Post;
-  
+
   constructor() { }
 
   ngOnInit() {

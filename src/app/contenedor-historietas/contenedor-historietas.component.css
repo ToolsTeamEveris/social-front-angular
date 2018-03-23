@@ -1,8 +1,10 @@
 li{
     list-style: none;
 }
+ul{
+  padding-left: 0;
+}
 #contenedorH{
     height: 350px;
     overflow-y: scroll;
-    padding-right: 10px;
 }

@@ -1,11 +1,3 @@
-#historias {
-  width: 700px;
-}
-
-#colegas {
-  width: 200px;
-}
-
-.d-block {
-  margin-top: 25px;
+.row {
+  margin: 25px;
 }
