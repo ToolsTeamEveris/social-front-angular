@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Persona } from '../Entidades/persona';
-import { PersonaServiceService } from '../Services/persona-service.service';
+import { Persona } from '../../shared/Entidades/persona';
+import { PersonaServiceService } from '../../shared/Services/persona-service.service';
 import { Observable } from 'rxjs/Observable';
 
 import { FormControl, FormGroup } from '@angular/forms';

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PersonaServiceService } from '../Services/persona-service.service';
-import { Persona } from '../Entidades/persona';
+import { PersonaServiceService } from '../shared/Services/persona-service.service';
+import { Persona } from '../shared/Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

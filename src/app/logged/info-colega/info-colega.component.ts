@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Persona } from '../Entidades/persona';
+import { Persona } from '../shared/Entidades/persona';
 
 @Component({
-  selector: 'app-inrfo-colega',
-  templateUrl: './inrfo-colega.component.html',
-  styleUrls: ['./inrfo-colega.component.css']
+  selector: 'app-info-colega',
+  templateUrl: './info-colega.component.html',
+  styleUrls: ['./info-colega.component.css']
 })
-export class InrfoColegaComponent implements OnInit {
+export class InfoColegaComponent implements OnInit {
 
   //@Input() col: Persona;
   col: Persona = {
