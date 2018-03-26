@@ -41,7 +41,7 @@ export class PublicarHistorietaComponent implements OnInit {
       lng: 0
     };
   }
-
+  
   createCoords() {
     this.geolocation.getLocation().subscribe(
         position => {
@@ -50,5 +50,8 @@ export class PublicarHistorietaComponent implements OnInit {
         },
         error => console.log(error),
     );
+  }
+  preRenderFunc(content: string) {
+    return content.replace(/something/g, 'new value'); // must return a string
   }
 }

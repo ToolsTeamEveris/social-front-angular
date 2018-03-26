@@ -19,6 +19,7 @@ import { LoggedComponent } from './logged.component';
 import { MisCosasComponent } from './cosas/mis-cosas/mis-cosas.component';
 import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { MisHistorietasComponent } from './mis-historietas/mis-historietas.compo
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    UtilsModule
+    UtilsModule,
+    LMarkdownEditorModule
   ],
   declarations: [
     NavBarComponent,
