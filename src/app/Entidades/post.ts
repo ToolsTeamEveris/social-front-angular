@@ -2,8 +2,11 @@ import { Persona } from '../Entidades/persona';
 enum Like {Mola,PSSST,PUFFF}
 
 export interface Post {
-    user: Persona;
-    created_at: Date;
-    content: string;
+    id: number;
+    creator: Persona;
+    creationDate: Date;
+    text: string;
     like: string;
+    type: string;
+    picture: string;
 }

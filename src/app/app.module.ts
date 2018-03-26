@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HistorietasService } from '../app/Services/historietas.service';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule }    from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
@@ -42,6 +42,7 @@ import { BuscadorColeguitasComponent } from './buscador-coleguitas/buscador-cole
     BuscadorColeguitasComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

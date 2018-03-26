@@ -14,7 +14,7 @@ export class ContenedorHistorietasComponent implements OnInit {
   constructor(private histService: HistorietasService) { }
 
   ngOnInit() {
-    this.histService.getPost(1).subscribe(res => {
+    this.histService.getPost().subscribe(res => {
       this.historietas = res; });
   }
 

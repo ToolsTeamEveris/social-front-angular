@@ -1,15 +1,14 @@
 
 <div class="card mt-3" style="width: 100%;" id="contenedor_historieta">
   <div class="card-body">
-
     <div class="row">
-      <h3 class="col-md-6" id="NombreUsuario">{{post.user.name}} {{post.user.surname}}</h3>
-      <h3 class="text-right col-md-6">{{post.created_at | date:'dd/MM/yyyy'}}</h3>
+      <h3 class="col-md-6" id="NombreUsuario">{{post.creator.name}} {{post.creator.surname}}</h3>
+      <h3 class="text-right col-md-6">{{post.creationDate | date:'dd/MM/yyyy'}}</h3>
 
     </div>
     <div id="fotoMensaje">
-      <img class="mr-3" src={{post.user.picture}} alt="Card image cap">
-      <p class="card-text">{{post.content}}</p>
+      <img class="mr-3" src={{post.creator.picture}} >
+      <p class="card-text">{{post.text}}</p>
     </div>
     
   </div>

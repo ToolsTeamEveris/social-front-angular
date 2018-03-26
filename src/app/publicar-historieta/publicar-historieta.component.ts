@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../Entidades/post'; 
+import { HistorietasService } from '../Services/historietas.service';
 
 @Component({
   selector: 'app-publicar-historieta',
@@ -6,14 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publicar-historieta.component.css']
 })
 export class PublicarHistorietaComponent implements OnInit {
-  historia = '';
 
-  constructor() { }
+  historieta: Post;
+  
+  constructor(private historietaService: HistorietasService) { }
 
-  publicarHistorieta(historieta) {
+  publicarHistorieta() {
+    this.historietaService.postHistorieta(this.historieta).subscribe(res => {
+      
+    })
   }
 
   ngOnInit() {
+    this.initPost();
+  }
+
+  initPost(){
+    this.historieta = {
+      id: 0,
+      creator: null,
+      creationDate: new Date(),
+      text: '',
+      like: '',
+      type: '',
+      picture: ''
+    }
   }
 
 }

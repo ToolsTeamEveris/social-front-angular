@@ -3,40 +3,24 @@ import { Post } from '../Entidades/post';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SERVER } from '../app-const';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class HistorietasService {
 
-  persona: Persona = {
-    id: 1,
-    name: 'Gines',
-    surname: 'Abadia',
-    picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
+  private postUrl = 'post';
+  constructor(private http: HttpClient) { }
+
+  getPost(): Observable<Post[]>{
+    return this.http.get<Post[]>(`${SERVER}${this.postUrl}`);
   }
 
-  historias: Post[] = [
-    {
-      user: this.persona,
-      created_at: new Date,
-      content: "Este es el contenido de la historia",
-      like: "PUFF"
-    },
-    {
-      user: this.persona,
-      created_at: new Date,
-      content: "Este es el contenido de la historia",
-      like: "PUFF"
-    },
-    {
-      user: this.persona,
-      created_at: new Date,
-      content: "Este es el contenido de la historia",
-      like: "PUFF"
-    }
-  ]
-  constructor() { }
-
-  getPost(id: number): Observable<Post[]>{
-    return Observable.of(this.historias);
-}
+  postHistorieta(historia: Post): Observable<Post>{
+    return this.http.post<Post>(`${SERVER}${this.postUrl}`,historia);
+  }
 }
