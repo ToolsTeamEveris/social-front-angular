@@ -2,8 +2,31 @@
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(68, 46, 31);
-    display: inline-block;
+    height:200px;
 }
-#card{
-    display: inline;
+#contenedor_usuario,
+#contenedor_usuario img,
+.pos{
+    transition:all 0.15s cubic-bezier(.85,1.29,.95,1.02);
+        -webkit-transition:all 0.15s cubic-bezier(.85,1.29,.95,1.02);
+        -moz-transition:all 0.15s cubic-bezier(.85,1.29,.95,1.02);
+        -ms-transition:all 0.15s cubic-bezier(.85,1.29,.95,1.02);
+        -o-transition:all 0.15s cubic-bezier(.85,1.29,.95,1.02); 
+}
+#contenedor_usuario img{
+    bottom:-40px;
+    left:20px;
+}
+.pos{
+    padding-left:330px;
+}
+.encoger{
+    height:160px !important;
+}
+.encogerimg{
+    width:20% !important;
+    height:95% !important;
+}
+.movetxt{
+    padding-left:280px;
 }
