@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 //Custom modules
 import { SharedModule } from './shared/shared.module';
 import { LoggedRoutingModule } from './logged-routing.module';
+import { UtilsModule } from '../utils/utils.module';
 
 //Components
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -25,6 +26,7 @@ import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    UtilsModule
   ],
   declarations: [
     NavBarComponent,
