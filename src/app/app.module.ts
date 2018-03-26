@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 //Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { GeolacationService } from './shared-services/geolacation.service';
 
 
 
@@ -48,6 +49,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
+    GeolacationService
   ],
   bootstrap: [AppComponent]
 })

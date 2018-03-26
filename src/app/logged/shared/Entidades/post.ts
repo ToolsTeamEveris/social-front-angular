@@ -6,4 +6,6 @@ export interface Post {
     created_at: Date;
     content: string;
     like: string;
+    lat?: number;
+    lng?: number;
 }
