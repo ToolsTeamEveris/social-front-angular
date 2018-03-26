@@ -1,9 +1,9 @@
-<div id="contenedorColegas">
-  <ul>
-    <li *ngFor="let coleguilla of coleguillas">
+<div class="bg-white" id="contenedorColegas">
+  <ul class="pl-0 list-group-item border-0">
+    <li class="list-group-item list-group-item-action border-0 pt-1 pl-1 w-100" *ngFor="let coleguilla of coleguillas">
       <app-coleguilla [col]="coleguilla"></app-coleguilla>
     </li>
-    <li *ngFor="let coleguillaPendiente of coleguillasPendientes">
+    <li class="list-group-item list-group-item-action border-0 pt-1 pl-1 w-100" *ngFor="let coleguillaPendiente of coleguillasPendientes">
       <app-coleguilla-add [col]="coleguillaPendiente"></app-coleguilla-add>
     </li>
   </ul>

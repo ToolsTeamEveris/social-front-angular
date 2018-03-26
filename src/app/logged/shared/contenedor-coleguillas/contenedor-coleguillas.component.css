@@ -1,14 +1,29 @@
-ul {
-  padding-left: 0px;
-}
 li {
-  padding-top: 10px;
   list-style: none;
   width: 90%;
-  padding-left: 20px;
+}
+ul {
+  margin: 0px;
 }
 #contenedorColegas {
   height: 350px;
-  overflow-y: scroll;
-  background: white;
+  overflow-y: auto;
+}
+.row {
+ margin: 0px !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #99cc00;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #608000;
 }
