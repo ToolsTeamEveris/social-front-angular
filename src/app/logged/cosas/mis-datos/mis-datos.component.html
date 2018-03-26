@@ -1,26 +1,24 @@
-<form [formGroup]="personalData" id="formulario">
+<form [formGroup]="personalData" class="my-5 py-3">
   <div class="form-group row">
-    <label class="col-4 col-form-label">Nombre:</label>
-    <div class="col-8">
-      <input class="form-control col-10" formControlName="name" (keyup)="updateName()" placeholder="Modifica tu nombre">
+    <label class="col-sm-2 col-form-label" id="lblNombre">Nombre:</label>
+    <div class="col-sm-9">
+      <input class="form-control text-success" formControlName="name" for="lblNombre" (keyup)="updateName()" placeholder="Modifica tu nombre">
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-4 col-form-label">Apellidos:</label>
-    <div class="col-8">
-      <input class="form-control col-10" formControlName="surname" (keyup)="updateSurname()" placeholder="Modifica tu apellido">
-    </div>
-  </div>
-  <div class="container">
-    <div class="custom-file w-50">
-      <input type="file" class="custom-file-input" id="newFile"
-         (change)="updatePicture($event)"
-        aria-describedby="fileHelp"
 
-        accept="image/*" formControlName="picture">
-      <label class="custom-file-label col-12 col-form-label" id="lblFile" for="newFile">Modifica tu foto
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" id="lblApellidos">Apellidos:</label>
+    <div class="col-sm-9">
+      <input class="form-control text-success" formControlName="surname" for="lblNombre" (keyup)="updateSurname()" placeholder="Modifica tu apellido">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="custom-file w-50 mx-auto">
+      <label class="custom-file-label col-12 col-form-label text-left text-truncate" for="newFile">Modifica tu foto
       </label>
-
+      <input type="file" class="custom-file-input" id="newFile" (change)="updatePicture($event)" aria-describedby="fileHelp" accept="image/*"
+        formControlName="picture">
     </div>
   </div>
 </form>

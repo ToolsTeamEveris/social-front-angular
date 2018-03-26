@@ -1,9 +1,9 @@
-.contColeguilla2 div{
+/*.contColeguilla2 div{
     height: 35px;
     line-height: 35px;
     position:relative;
-
 }
+
 .contColeguilla2 div:last-child a{
     position:absolute;
     width: 96%;
@@ -22,16 +22,20 @@
     border-radius: 10px;
     background-color: rgb(71, 155, 38);
 }
+
 .contColeguilla div{
     padding:0;
 }
+
 .imgColeguilla{
     height: 100%;
     padding: 0px;
 }
+
 .imgColeguilla img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
+*/

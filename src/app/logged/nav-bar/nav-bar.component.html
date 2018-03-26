@@ -1,11 +1,11 @@
 
-  <nav class="navbar navbar-light bg-white">
+  <nav class="navbar navbar-light bg-white mt-3 mb-5">
     <img src="../../assets/icono.png" width="30" height="30" alt="">
-    <a class="navbar-brand" href="/principal">Mis Historietas</a>
-    <a class="navbar-brand" href="/misCosas">Mis cosas</a>
-    <a class="navbar-brand" href="/misColegas">Mis colegas</a>
-    <a class="navbar-brand" href="#">Eventos</a>
-    <a [routerLink]="['/logged/my']">Test</a>
+    <a class="navbar-brand" [routerLink]="['/logged/historietas']">Mis Historietas</a>
+    <a class="navbar-brand" [routerLink]="['/logged/my']">Mis cosas</a>
+    <a class="navbar-brand" [routerLink]="['/logged/colegas']">Mis colegas</a>
+    <a class="navbar-brand" [routerLink]="['/logged/my']" href="#">Eventos</a>
+
     <button class="btn btn-primary" (click)="showModal()">Launch Demo Modal</button>
   </nav>
 

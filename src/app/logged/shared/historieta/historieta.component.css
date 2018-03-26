@@ -1,12 +1,3 @@
-#fotoMensaje{
-    display: block;
-    margin-left: 0em;
-}
-#contenedor_historieta{
-    text-align: left
-}
 img{
-    float: left;
     width: 10%;
-    
 }
