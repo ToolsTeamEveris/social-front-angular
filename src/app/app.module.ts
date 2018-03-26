@@ -8,6 +8,10 @@ import { LoggedModule } from './logged/logged.module';
 //Components
 import { AppComponent } from './app.component';
 
+//Interceptors
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+
 
 
 @NgModule({
@@ -38,7 +42,13 @@ import { AppComponent } from './app.component';
     ),
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
