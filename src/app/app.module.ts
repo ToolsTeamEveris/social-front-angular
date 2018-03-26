@@ -13,6 +13,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { GeolacationService } from './shared-services/geolacation.service';
 
+import { AgmCoreModule } from '@agm/core';
+
 
 
 @NgModule({
@@ -41,7 +43,11 @@ import { GeolacationService } from './shared-services/geolacation.service';
         }
       ]
     ),
-    BrowserModule
+    BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC2sYQIcXgK0jbglbKQHc_ImsBieJwohHQ',
+      libraries: ['places']
+  }),
   ],
   providers: [
     {
