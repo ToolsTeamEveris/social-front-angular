@@ -18,10 +18,11 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     console.log({ username, password });
     return this.http
-      .post(`${SERVER}auth/login`, { username, password })
+      .post(`${SERVER}auth/login`, { username, password }, { observe: 'response'})
       .catch((resp: HttpErrorResponse) => Observable.throw('Error con el servicio de login'))
       .map(resp => {
-        console.log(resp.headers.get('Authorization'));
+        localStorage.setItem('token', (resp.headers.get('Authorization')));
+        this.logged = true;
         return true;
       })
   }
