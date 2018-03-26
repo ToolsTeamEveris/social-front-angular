@@ -16,4 +16,7 @@ export class PublicarHistorietaComponent implements OnInit {
   ngOnInit() {
   }
 
+  preRenderFunc(content: string) {
+    return content.replace(/something/g, 'new value'); // must return a string
+  }
 }
