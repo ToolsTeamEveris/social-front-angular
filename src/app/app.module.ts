@@ -17,9 +17,23 @@ import { AppComponent } from './app.component';
   imports: [
     RouterModule.forRoot(
       [
-        { path: '', redirectTo: '/logged', pathMatch: 'full' },
-        { path: 'logged', loadChildren: './logged/logged.module#LoggedModule' },
-        { path: '**', redirectTo: '/logged', pathMatch: 'full' }
+        {
+          path: 'auth',
+          loadChildren: './auth/auth.module#AuthModule'
+        },
+        { 
+          path: 'logged', 
+          loadChildren: './logged/logged.module#LoggedModule' 
+        },
+        { 
+          path: '**', 
+          redirectTo: '/auth/login'
+        },
+        {
+          path: '', 
+          redirectTo: '/auth/login',
+          pathMatch: 'full'
+        }
       ]
     ),
     BrowserModule
