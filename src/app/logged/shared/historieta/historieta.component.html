@@ -3,13 +3,13 @@
   <div class="card-body text-left">
 
     <div class="row">
-      <h3 class="col-md-6 text-truncate" id="NombreUsuario">{{post.user.name}} {{post.user.surname}}</h3>
+      <h3 class="col-md-6 text-truncate" id="NombreUsuario">{{post.creator.name}} {{post.creator.surname}}</h3>
       <h3 class="text-right col-md-6 d-none d-md-block">{{post.created_at | date:'dd/MM/yyyy'}}</h3>
 
     </div>
     <div class="d-block ml-0">
-      <img class="img-fluid mr-3 float-left" src={{post.user.picture}} alt="Card image cap">
-      <p class="card-text">{{post.content}}</p>
+      <img class="img-fluid mr-3 float-left" src={{post.creator.picture}} alt="Card image cap">
+      <p class="card-text">{{post.text}}</p>
     </div>
 
   </div>
@@ -17,5 +17,18 @@
       <a class="mr-3" href=""><i class="fas fa-hand-peace"></i></a>
       <a class="mr-3" href=""><i class="fas fa-hand-rock"></i></a>
       <a class="mr-3" href=""><i class="fas fa-thumbs-down"></i></a>
+      <span (click)="showHideMap()" >
+        <i class="fas fa-map-marker-alt mr-3"></i>
+      </span>
+  </div>
+  <div *ngIf="map" class="card mt-4">
+    <div class="card-body p-0">
+        <div id="gmap" >
+            <agm-map style="height: 30vh; width: 100%;" [zoom]="zoom" [latitude]="post.lat" [longitude]="post.lng">
+                <agm-marker [latitude]="post.lat" [longitude]="post.lng"></agm-marker>
+                <agm-info-window>The post has been created here!!</agm-info-window>
+            </agm-map>
+        </div>
+    </div>
   </div>
 </div>

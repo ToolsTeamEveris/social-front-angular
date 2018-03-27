@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../Entidades/post';
+import { HistorietasService } from '../Services/historietas.service';
 
 @Component({
   selector: 'app-historieta',
@@ -9,10 +10,19 @@ import { Post } from '../Entidades/post';
 export class HistorietaComponent implements OnInit {
 
   @Input() post: Post;
-
-  constructor() { }
+  arrayPost: Post[] = [];
+  map : boolean = false;
+  zoom = 17;
+  constructor(private postService : HistorietasService) { }
 
   ngOnInit() {
+    
   }
 
+  showHideMap(){
+    console.log('asdf');
+    this.map = !this.map;
+  }
+
+  
 }

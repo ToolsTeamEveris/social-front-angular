@@ -9,12 +9,9 @@ import { LoggedModule } from './logged/logged.module';
 import { AppComponent } from './app.component';
 
 //Interceptors
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { GeolacationService } from './shared-services/geolacation.service';
-
-import { AgmCoreModule } from '@agm/core';
-
 
 
 @NgModule({
@@ -44,10 +41,7 @@ import { AgmCoreModule } from '@agm/core';
       ]
     ),
     BrowserModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2sYQIcXgK0jbglbKQHc_ImsBieJwohHQ',
-      libraries: ['places']
-  }),
+    HttpClientModule
   ],
   providers: [
     {

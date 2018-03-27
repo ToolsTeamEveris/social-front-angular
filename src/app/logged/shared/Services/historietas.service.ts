@@ -3,6 +3,11 @@ import { Post } from '../Entidades/post';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import { HttpClient } from '@angular/common/http';
+import { SERVER, IMG_USER_PATH } from '../../../app.constants';
 
 @Injectable()
 export class HistorietasService {
@@ -19,7 +24,9 @@ export class HistorietasService {
       user: this.persona,
       created_at: new Date,
       content: "Este es el contenido de la historia",
-      like: "PUFF"
+      like: "PUFF",
+      lat: 38.4,
+      lng: -1
     },
     {
       user: this.persona,
@@ -34,9 +41,23 @@ export class HistorietasService {
       like: "PUFF"
     }
   ]
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getPost(id: number): Observable<Post[]>{
+  // Get all post
+  getAllPost(): Observable<Post[]> {
+    return this.http.get(`${SERVER}post`).map((post: Post[] ) => {
+      post.map( p => {
+        console.log(post);
+           p.creator.picture = `${IMG_USER_PATH}${p.creator.picture}`;
+       return p;  
+
+      })
+        return post;
+      
+    }).catch(error => Observable.throw(error));
+  }
+  
+  getPost(id: number): Observable<Post[]> {
     return Observable.of(this.historias);
-}
+  }
 }

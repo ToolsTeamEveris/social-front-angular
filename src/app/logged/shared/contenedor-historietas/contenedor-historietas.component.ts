@@ -10,12 +10,19 @@ import { HistorietasService } from '../Services/historietas.service';
 export class ContenedorHistorietasComponent implements OnInit {
 
   // @Input() historietas: Post[];
-  historietas: Post[];
+  historietas: Post[] = [];
   constructor(private histService: HistorietasService) { }
 
   ngOnInit() {
-    this.histService.getPost(1).subscribe(res => {
-      this.historietas = res; });
+    this.getAllPost();
   }
 
+  getAllPost() {
+    this.histService.getAllPost().subscribe(res => {
+      this.historietas = res; 
+      console.log(res);
+    },
+    (error: string) => console.log('Error loading post: ' + error));
+  }
+  
 }
