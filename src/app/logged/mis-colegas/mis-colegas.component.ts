@@ -43,9 +43,10 @@ export class MisColegasComponent implements OnInit {
   }
 
   searchFriend() {
-    this.personaService.getPersonByTerm(this.searchTerm).subscribe(
-      result => this.filteredList = result
-    );
+    if (this.searchTerm.trim() != '')
+      this.personaService.getPersonByTerm(this.searchTerm).subscribe(
+        result => this.filteredList = result
+      );
   }
 
 }

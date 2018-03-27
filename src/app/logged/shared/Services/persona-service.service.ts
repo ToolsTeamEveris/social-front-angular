@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class PersonaServiceService {
@@ -13,9 +14,11 @@ export class PersonaServiceService {
     picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
   };
 
+  urlServer = 'http://localhost:8080/'
+
   personas: Persona[] = [];
 
-  constructor() {
+  constructor( private http:HttpClient ) {
     let person;
 
     for(let i = 0; i<10; i++) {
@@ -44,8 +47,11 @@ export class PersonaServiceService {
 
   getPersonByTerm(term: string): Observable<Persona[]> {
     //TODO implements debounceTime
-    let result = this.personas.filter( persona => persona.name.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
-    return Observable.of(result);
+    return this.http.get(`${this.urlServer}person/search/${term}`).map( (response:any) => {
+      console.log(response);
+      return response;
+    });
+    
   }
 
 }
