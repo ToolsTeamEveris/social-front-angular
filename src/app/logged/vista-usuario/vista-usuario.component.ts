@@ -1,13 +1,8 @@
-<<<<<<< HEAD:src/app/logged/vista-usuario/vista-usuario.component.ts
-import { Component, OnInit, Input } from '@angular/core';
-import { PersonaServiceService } from '../shared/Services/persona-service.service';
-import { Persona } from '../shared/Entidades/persona';
-=======
+
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { PersonaServiceService } from '../Services/persona-service.service';
-import { Persona } from '../Entidades/persona';
->>>>>>> front:src/app/vista-usuario/vista-usuario.component.ts
 import { Observable } from 'rxjs/Observable';
+import { Persona } from '../shared/Entidades/persona';
+import { PersonaServiceService } from '../shared/Services/persona-service.service';
 
 @Component({
   selector: 'app-vista-usuario',

@@ -15,13 +15,13 @@ export class NavBarComponent implements OnInit {
   }
 
   showModal() {
-    const modalRef = this.modal.open(ModalComponent); 
-        modalRef.componentInstance.title = 'Test modal'; 
+    const modalRef = this.modal.open(ModalComponent);
+        modalRef.componentInstance.title = 'Test modal';
         modalRef.componentInstance.body = 'This modal is an example of modal utilization';
-        
-        //This line is optional. True for information modal, false for confirm modal
+
+        // This line is optional. True for information modal, false for confirm modal
         modalRef.componentInstance.info = false;
-    
+
         modalRef.result
           .then( ( response ) =>  console.log(`Response ${response}`) )
           .catch(() => console.log('Modal closed'));
