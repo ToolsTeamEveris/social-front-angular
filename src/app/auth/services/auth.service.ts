@@ -18,10 +18,11 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     console.log({ username, password });
     return this.http
-      .post(`${SERVER}auth/login`, { username, password })
+      .post(`${SERVER}auth/login`, { username, password }, { observe: 'response'})
       .catch((resp: HttpErrorResponse) => Observable.throw('Error con el servicio de login'))
       .map(resp => {
-        console.log(resp.headers.get('Authorization'));
+        localStorage.setItem('token', (resp.headers.get('Authorization')));
+        this.logged = true;
         return true;
       })
   }
@@ -34,5 +35,24 @@ export class AuthService {
         console.log(resp);
         return true;
       })
+  }
+
+  isLogged(): Observable<boolean> {
+
+    if (this.logged) {
+      return Observable.of(true);
+    } else if (localStorage.getItem('token')) {
+      /*return this.http.get<{ok: boolean}>(`${this.urlServer}auth/token`)
+        .map( response => {
+          if (response.ok) {
+            this.logged = true;
+            return true;
+          }
+          return false;
+        });*/
+        return Observable.of(true);
+    } else {
+      return Observable.of(false);
+    }
   }
 }

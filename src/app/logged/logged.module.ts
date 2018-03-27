@@ -14,7 +14,6 @@ import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
 import { PublicarHistorietaComponent } from './publicar-historieta/publicar-historieta.component';
 import { InfoColegaComponent } from './info-colega/info-colega.component';
 import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
-import { BuscadorColegasComponent } from './buscador-colegas/buscador-colegas.component';
 import { LoggedComponent } from './logged.component';
 import { MisCosasComponent } from './cosas/mis-cosas/mis-cosas.component';
 import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
@@ -41,7 +40,6 @@ import { AgmCoreModule } from '@agm/core';
     MisCosasComponent,
     InfoColegaComponent,
     MisColegasComponent,
-    BuscadorColegasComponent,
     MisHistorietasComponent
   ],
   providers: [

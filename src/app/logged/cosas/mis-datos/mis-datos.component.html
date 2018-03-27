@@ -17,8 +17,12 @@
     <div class="custom-file w-50 mx-auto">
       <label class="custom-file-label col-12 col-form-label text-left text-truncate" for="newFile">Modifica tu foto
       </label>
-      <input type="file" class="custom-file-input" id="newFile" (change)="updatePicture($event)" aria-describedby="fileHelp" accept="image/*"
-        formControlName="picture">
+      <input type="file" class="custom-file-input" id="newFile" aria-describedby="fileHelp" accept="image/*"
+        formControlName="picture" #fileImage (change)="updatePicture(fileImage)">
     </div>
+  </div>
+
+  <div>
+    <button class="btn btn-primary" (click)="updateDataProfile()">Actualizar Datos Perfil</button>
   </div>
 </form>

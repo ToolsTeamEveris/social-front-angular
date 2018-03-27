@@ -10,8 +10,12 @@ import { AppComponent } from './app.component';
 
 //Interceptors
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+//Services
+import { AuthService } from './auth/services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { GeolacationService } from './shared-services/geolacation.service';
+import { LogoutActivateGuardService } from './guards/logout-activate-guard.service';
+import { LoginActivateGuardService } from './guards/login-activate-guard.service';
 
 
 @NgModule({
@@ -23,14 +27,16 @@ import { GeolacationService } from './shared-services/geolacation.service';
       [
         {
           path: 'auth',
+          canActivate: [LogoutActivateGuardService],
           loadChildren: './auth/auth.module#AuthModule'
         },
         { 
           path: 'logged', 
+          canActivate: [LoginActivateGuardService],
           loadChildren: './logged/logged.module#LoggedModule' 
         },
         { 
-          path: '**', 
+          path: '**',
           redirectTo: '/auth/login'
         },
         {
@@ -49,7 +55,10 @@ import { GeolacationService } from './shared-services/geolacation.service';
       useClass: AuthInterceptor,
       multi: true,
     },
-    GeolacationService
+    AuthService,
+    GeolacationService,
+    LoginActivateGuardService,
+    LogoutActivateGuardService
   ],
   bootstrap: [AppComponent]
 })
