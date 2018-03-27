@@ -21,7 +21,7 @@
     <div class="col-xs-12 col-md-7 container" *ngIf="searchTerm != ''">
         <h4>Buscando por: {{ searchTerm }}</h4>
         <ul *ngIf="filteredList.length > 0; else notResult">
-            <li *ngFor="let colega of filteredList">
+            <li *ngFor="let colega of filteredList" class="mb-3">
                 <app-coleguilla [col]="colega"></app-coleguilla>
             </li>
         </ul>
