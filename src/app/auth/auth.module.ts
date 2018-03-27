@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { GoogleLoginModule } from '../google-login/google-login.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
         path: 'register',
         component: RegisterComponent,
       }
-    ])
+    ]),
+    GoogleLoginModule.forRoot('269115313905-om54ugojq4p7huf2d1pmm2a28i8377sl.apps.googleusercontent.com')
   ],
   declarations: [
     LoginComponent,
