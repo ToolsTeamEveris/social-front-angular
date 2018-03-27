@@ -11,10 +11,9 @@
   <button type="submit" class="btn btn-primary">Login</button>
   <a [routerLink]="['/auth/register']"><button type="button" class="btn btn-primary" >Register</button></a>
 </form>
-<!-- <button aeGoogleLogin (loginOk)="loggedGoogle($event)" (loginError)="showError($event)">
-  Login with Google
-</button>
-<button aeFbLogin [scopes]="['email', 'public_profile']" class="btn btn-primary" (loginOk)="loggedFacebook($event)"
+<button appGoogleLogin type="button" class="btn btn-danger"
+(loginOk)="loggedGoogle($event)" (loginError)="showError($event)">Google</button>
+<!-- <button aeFbLogin [scopes]="['email', 'public_profile']" class="btn btn-primary" (loginOk)="loggedFacebook($event)"
 (loginError)="showError($event)">
 <i class="fa fa-facebook" aria-hidden="true"></i>
 Facebook

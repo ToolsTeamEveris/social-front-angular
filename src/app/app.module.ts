@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 //Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { GoogleLoginModule } from './google-login/google-login.module';
 
 
 
