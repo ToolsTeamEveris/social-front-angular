@@ -9,8 +9,7 @@ import { Post } from '../shared/Entidades/post';
   styleUrls: ['./publicar-historieta.component.css']
 })
 export class PublicarHistorietaComponent implements OnInit {
-  historia = '';
-
+  historia: string = '';
   post: Post;
   persona: Persona;
   date = new Date();
@@ -52,6 +51,6 @@ export class PublicarHistorietaComponent implements OnInit {
     );
   }
   preRenderFunc(content: string) {
-    return content.replace(/something/g, 'new value'); // must return a string
+    return content != null ? content.replace(/something/g, 'new value'): null;
   }
 }
