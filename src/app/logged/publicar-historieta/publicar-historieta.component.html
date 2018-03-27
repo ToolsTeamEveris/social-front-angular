@@ -1,6 +1,6 @@
 <div class="panel panel-default mt-5">
   <div class="panel-body h-100">
-    <md-editor name="Content" [preRender]="preRenderFunc" [(ngModel)]="post.content" [height]="'200px'" maxlength="140"></md-editor>
+    <md-editor name="Content" [preRender]="preRenderFunc" [(ngModel)]="historia" [height]="'200px'" maxlength="140"></md-editor>
     <button type="button" class="btn btn-primary float-sm-right" (click)="publicarHistorieta()" [disabled]="!historia || historia.length == 0">
       Publicar Historieta
     </button>
