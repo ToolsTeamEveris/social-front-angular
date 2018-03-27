@@ -36,4 +36,23 @@ export class AuthService {
         return true;
       })
   }
+
+  isLogged(): Observable<boolean> {
+
+    if (this.logged) {
+      return Observable.of(true);
+    } else if (localStorage.getItem('token')) {
+      /*return this.http.get<{ok: boolean}>(`${this.urlServer}auth/token`)
+        .map( response => {
+          if (response.ok) {
+            this.logged = true;
+            return true;
+          }
+          return false;
+        });*/
+        return Observable.of(true);
+    } else {
+      return Observable.of(false);
+    }
+  }
 }
