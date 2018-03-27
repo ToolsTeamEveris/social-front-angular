@@ -29,15 +29,16 @@ export class PublicarHistorietaComponent implements OnInit {
       id: -1,
       name: '',
       surname: '',
-      picture: '',
+      picture: ''
+     
     }
     this.post = {
       user: this.persona,
       created_at: this.date,
       content: '',
-      like: '',
+      like: '' ,
       lat: 0,
-      lng: 0
+      lng: 0   
     };
   }
   

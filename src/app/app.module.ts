@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 //Custom modules
 import { LoggedModule } from './logged/logged.module';
@@ -9,13 +8,14 @@ import { LoggedModule } from './logged/logged.module';
 //Components
 import { AppComponent } from './app.component';
 
+//Interceptors
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 //Services
 import { AuthService } from './auth/services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { GeolacationService } from './shared-services/geolacation.service';
 import { LogoutActivateGuardService } from './guards/logout-activate-guard.service';
 import { LoginActivateGuardService } from './guards/login-activate-guard.service';
-
 
 
 @NgModule({
