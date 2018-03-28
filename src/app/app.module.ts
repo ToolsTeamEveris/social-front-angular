@@ -13,10 +13,15 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 //Services
 import { AuthService } from './auth/services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+
 import { GeolacationService } from './shared-services/geolacation.service';
+
 import { LogoutActivateGuardService } from './guards/logout-activate-guard.service';
 import { LoginActivateGuardService } from './guards/login-activate-guard.service';
 
+import { GoogleLoginModule } from './google-login/google-login.module';
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,7 @@ import { LoginActivateGuardService } from './guards/login-activate-guard.service
       ]
     ),
     BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     HttpClientModule
   ],
   providers: [
