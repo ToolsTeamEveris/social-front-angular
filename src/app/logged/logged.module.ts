@@ -20,6 +20,7 @@ import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { AgmCoreModule } from '@agm/core';
     MisCosasComponent,
     InfoColegaComponent,
     MisColegasComponent,
-    MisHistorietasComponent
+    MisHistorietasComponent,
+    ChatComponent
   ],
   providers: [
   ]
