@@ -20,6 +20,7 @@ import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
+import { HistorietasService } from './shared/Services/historietas.service';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { AgmCoreModule } from '@agm/core';
     MisHistorietasComponent
   ],
   providers: [
+    HistorietasService
   ]
 })
 export class LoggedModule { }

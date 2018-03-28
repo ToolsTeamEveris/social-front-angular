@@ -10,13 +10,13 @@ import { HistorietasService } from '../Services/historietas.service';
 export class HistorietaComponent implements OnInit {
 
   @Input() post: Post;
-  arrayPost: Post[] = [];
+  d : Date = new Date();
   map : boolean = false;
   zoom = 17;
   constructor(private postService : HistorietasService) { }
 
   ngOnInit() {
-    
+    this.post.created_at = this.d;
   }
 
   showHideMap(){
