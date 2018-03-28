@@ -15,8 +15,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { GeolacationService } from './shared-services/geolacation.service';
 
 import { GoogleLoginModule } from './google-login/google-login.module';
-
-
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ import { GoogleLoginModule } from './google-login/google-login.module';
         }
       ]
     ),
-    BrowserModule
+    BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     {
