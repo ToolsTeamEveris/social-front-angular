@@ -3,33 +3,45 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-md-5">
-        <div class="bg-white" id="contenedorColegas">
-            <ul class="pl-0 list-group-item border-0">
-                <li class="list-group-item list-group-item-action border-0 pt-1 pl-1 w-100" *ngFor="let coleguilla of coleguillas">
-                    <app-coleguilla [col]="coleguilla"></app-coleguilla>
-                </li>
 
-                <li class="list-group-item list-group-item-action border-0 pt-1 pl-1 w-100" *ngFor="let coleguillaPendiente of coleguillasPendientes">
-                    <app-coleguilla-add [col]="coleguillaPendiente"></app-coleguilla-add>
+ 
+        <ul class="list-group border-0 col-xs-12 col-md-8 col-xl-6 center-block pr-0">
+            <li  *ngFor="let coleguilla of coleguillasSolicitados" class="list-group-item list-group-item-action">
+                <app-coleguilla-add
+                    [solicitada]="true" [col]="coleguilla" (cancel)="cancelarSolicitud($event)">
+                </app-coleguilla-add>
+            </li>
+
+            <li  *ngFor="let coleguilla of coleguillasPendientes" class="list-group-item list-group-item-action">
+                <app-coleguilla-add
+                [solicitada]="false" [col]="coleguilla" (accept)="aceptarSolicitud($event)">
+
+                </app-coleguilla-add>
+            </li>
+            
+            <li class="list-group-item list-group-item-action" *ngFor="let coleguilla of coleguillas">
+                <app-coleguilla [col]="coleguilla"></app-coleguilla>
+            </li>
+        </ul>   
+   
+
+    <div class="col-xs-12 col-md-4 col-xl-6">
+        <div *ngIf="filteredList != null">
+    
+            <h4>Buscando por: {{ searchTerm$ | async }}</h4>
+            <ul *ngIf="filteredList.length > 0; else notResult">
+                <li *ngFor="let colega of filteredList" class="mb-3">
+                    <app-coleguilla [col]="colega"></app-coleguilla>
                 </li>
-                <app-info-colega></app-info-colega>
-             
             </ul>
+            <ng-template #notResult>
+                <p class="alert alert-info">
+                    No se han encontrado resultados
+                </p>
+            </ng-template>
         </div>
     </div>
-    <div class="col-xs-12 col-md-7 container" *ngIf="filteredList != null">
-        <h4>Buscando por: {{ searchTerm$ | async }}</h4>
-        <ul *ngIf="filteredList.length > 0; else notResult">
-            <li *ngFor="let colega of filteredList" class="mb-3">
-                <app-coleguilla [col]="colega"></app-coleguilla>
-            </li>
-        </ul>
-        <ng-template #notResult>
-            <p class="alert alert-info">
-                No se han encontrado resultados
-            </p>
-        </ng-template>
-        
-    </div>
+    
+    
+    <app-info-colega></app-info-colega>
 </div>

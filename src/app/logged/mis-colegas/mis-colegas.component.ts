@@ -10,9 +10,9 @@ import { Subject } from 'rxjs/Subject';
 })
 export class MisColegasComponent implements OnInit {
   searchTerm$ = new Subject<string>();
-  user: Persona;
   coleguillas: Persona[] = [];
   coleguillasPendientes: Persona[] = [];
+  coleguillasSolicitados: Persona[] = [];
   filteredList: Persona[] = null;
 
   constructor( private personaService: PersonaServiceService ) { 
@@ -21,29 +21,29 @@ export class MisColegasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getColeguillasPendientes();
-    this.getColeguillas();
-  }
-
-  getColeguillas() {
-    this.personaService.getPersons().subscribe(
-      res => {
-        this.coleguillas = res;
-      });
-  }
-  getColeguillasPendientes() {
-    this.personaService.getPersonPen().subscribe(
-      res => {
-        this.coleguillasPendientes = res;
-      });
-
-  }
-  getUser() {
-    this.personaService.getLoggedUser().subscribe(
-      res => {
-        this.user = res;
+    this.personaService.getFriends().subscribe(
+      result => {
+        this.coleguillas = result.amigos;
+        this.coleguillasPendientes = result.pendientes;
+        this.coleguillasSolicitados = result.solicitados;
       }
-    );
+    )
   }
+
+  cancelarSolicitud( persona: Persona ) {
+    this.coleguillasSolicitados = this.coleguillasSolicitados.filter(
+      coleguilla => coleguilla.id != persona.id
+    );
+    
+  }
+
+  aceptarSolicitud( persona: Persona ) {
+    this.coleguillasPendientes = this.coleguillasPendientes.filter(
+      coleguilla => coleguilla.id != persona.id
+    );
+
+    this.coleguillas.push(persona);
+  }
+
 
 }
