@@ -9,10 +9,15 @@ import { LoggedModule } from './logged/logged.module';
 import { AppComponent } from './app.component';
 
 //Interceptors
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+//Services
+import { AuthService } from './auth/services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { GeolacationService } from './shared-services/geolacation.service';
+
+import { LogoutActivateGuardService } from './guards/logout-activate-guard.service';
+import { LoginActivateGuardService } from './guards/login-activate-guard.service';
 
 import { GoogleLoginModule } from './google-login/google-login.module';
 import { ServiceWorkerModule } from '@angular/service-worker'
@@ -27,14 +32,16 @@ import { environment } from '../environments/environment';
       [
         {
           path: 'auth',
+          canActivate: [LogoutActivateGuardService],
           loadChildren: './auth/auth.module#AuthModule'
         },
         { 
           path: 'logged', 
+          canActivate: [LoginActivateGuardService],
           loadChildren: './logged/logged.module#LoggedModule' 
         },
         { 
-          path: '**', 
+          path: '**',
           redirectTo: '/auth/login'
         },
         {
@@ -45,7 +52,8 @@ import { environment } from '../environments/environment';
       ]
     ),
     BrowserModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    HttpClientModule
   ],
   providers: [
     {
@@ -53,7 +61,10 @@ import { environment } from '../environments/environment';
       useClass: AuthInterceptor,
       multi: true,
     },
-    GeolacationService
+    AuthService,
+    GeolacationService,
+    LoginActivateGuardService,
+    LogoutActivateGuardService
   ],
   bootstrap: [AppComponent]
 })

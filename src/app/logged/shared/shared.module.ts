@@ -7,11 +7,16 @@ import { ColeguillaComponent } from './componente_coleguilla/coleguilla.componen
 import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.component';
 //import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { HistorietaComponent } from './historieta/historieta.component';
+import { AgmCoreModule } from '@agm/core';
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC2sYQIcXgK0jbglbKQHc_ImsBieJwohHQ',
+      libraries: ['places']
+  }),
   ],
   declarations: [
     ContenedorColeguillasComponent,

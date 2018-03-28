@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class PersonaServiceService {
@@ -13,9 +17,11 @@ export class PersonaServiceService {
     picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
   };
 
+  urlServer = 'http://localhost:8080/'
+
   personas: Persona[] = [];
 
-  constructor() {
+  constructor( private http:HttpClient ) {
     let person;
 
     for(let i = 0; i<10; i++) {
@@ -42,10 +48,18 @@ export class PersonaServiceService {
     return Observable.of(this.personas);
   }
 
-  getPersonByTerm(term: string): Observable<Persona[]> {
-    //TODO implements debounceTime
-    let result = this.personas.filter( persona => persona.name.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
-    return Observable.of(result);
+  getPersonByTerm(terms: Observable<string>): Observable<Persona[]> {
+    return terms.debounceTime(500)
+      .distinctUntilChanged()
+      .switchMap( term => this.findByTerm(term));
+  }
+              
+  private findByTerm(term: string): Observable<Persona[]> { 
+    if (term.trim() == '') return Observable.of(null);
+
+    return this.http.get(`${this.urlServer}person/search/${term}`).map( (response:any) => {
+      return response;
+    });
   }
 
 }

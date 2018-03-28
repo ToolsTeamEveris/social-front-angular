@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.2",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -27,6 +28,7 @@
     "@types/gapi": "0.0.35",
     "@types/gapi.auth2": "0.0.47",
     "angular-font-awesome": "^3.1.2",
+    "@types/googlemaps": "^3.30.8",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "ngx-markdown-editor": "^1.1.7",

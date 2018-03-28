@@ -19,6 +19,7 @@ import { MisCosasComponent } from './cosas/mis-cosas/mis-cosas.component';
 import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
