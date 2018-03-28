@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -45,13 +48,18 @@ export class PersonaServiceService {
     return Observable.of(this.personas);
   }
 
-  getPersonByTerm(term: string): Observable<Persona[]> {
-    //TODO implements debounceTime
+  getPersonByTerm(terms: Observable<string>): Observable<Persona[]> {
+    return terms.debounceTime(500)
+      .distinctUntilChanged()
+      .switchMap( term => this.findByTerm(term));
+  }
+              
+  private findByTerm(term: string): Observable<Persona[]> { 
+    if (term.trim() == '') return Observable.of(null);
+
     return this.http.get(`${this.urlServer}person/search/${term}`).map( (response:any) => {
-      console.log(response);
       return response;
     });
-    
   }
 
 }

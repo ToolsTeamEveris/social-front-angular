@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from '../shared/Entidades/persona';
 import { PersonaServiceService } from '../shared/Services/persona-service.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-mis-colegas',
@@ -8,13 +9,16 @@ import { PersonaServiceService } from '../shared/Services/persona-service.servic
   styleUrls: ['./mis-colegas.component.css']
 })
 export class MisColegasComponent implements OnInit {
-  searchTerm: string = '';
+  searchTerm$ = new Subject<string>();
   user: Persona;
   coleguillas: Persona[] = [];
   coleguillasPendientes: Persona[] = [];
-  filteredList: Persona[] = [];
+  filteredList: Persona[] = null;
 
-  constructor( private personaService: PersonaServiceService ) { }
+  constructor( private personaService: PersonaServiceService ) { 
+    this.personaService.getPersonByTerm(this.searchTerm$)
+      .subscribe( result => this.filteredList = result);
+  }
 
   ngOnInit() {
     this.getColeguillasPendientes();
@@ -40,13 +44,6 @@ export class MisColegasComponent implements OnInit {
         this.user = res;
       }
     );
-  }
-
-  searchFriend() {
-    if (this.searchTerm.trim() != '')
-      this.personaService.getPersonByTerm(this.searchTerm).subscribe(
-        result => this.filteredList = result
-      );
   }
 
 }

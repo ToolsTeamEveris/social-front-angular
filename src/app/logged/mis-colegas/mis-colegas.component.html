@@ -1,5 +1,5 @@
 <div class="container">
-    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="Buscar un colega..." (keyup)="searchFriend()" [(ngModel)]="searchTerm">
+    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="Buscar un colega..." (keyup)="searchTerm$.next($event.target.value)" [(ngModel)]="searchTerm">
 </div>
 
 <div class="row">
@@ -18,8 +18,8 @@
             </ul>
         </div>
     </div>
-    <div class="col-xs-12 col-md-7 container" *ngIf="searchTerm != ''">
-        <h4>Buscando por: {{ searchTerm }}</h4>
+    <div class="col-xs-12 col-md-7 container" *ngIf="filteredList != null">
+        <h4>Buscando por: {{ searchTerm$ | async }}</h4>
         <ul *ngIf="filteredList.length > 0; else notResult">
             <li *ngFor="let colega of filteredList" class="mb-3">
                 <app-coleguilla [col]="colega"></app-coleguilla>
