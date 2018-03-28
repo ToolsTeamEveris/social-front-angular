@@ -5,6 +5,7 @@ import { LoggedComponent } from './logged.component';
 import { MisCosasComponent } from './cosas/mis-cosas/mis-cosas.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
+import { LoginActivateGuardService } from '../guards/login-activate-guard.service';
 
 @NgModule({
   imports: [
@@ -12,9 +13,21 @@ import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
       [
         {
           path: '', component: LoggedComponent, children: [
-            { path: 'my', component: MisCosasComponent },
-            { path: 'historietas', component: MisHistorietasComponent},
-            { path: 'colegas', component: MisColegasComponent}
+            { 
+              path: 'my', 
+              canActivate: [LoginActivateGuardService], 
+              component: MisCosasComponent 
+            },
+            { 
+              path: 'historietas',  
+              canActivate: [LoginActivateGuardService],
+              component: MisHistorietasComponent
+            },
+            { 
+              path: 'colegas',  
+              canActivate: [LoginActivateGuardService],
+              component: MisColegasComponent
+            }
           ]
         },
       ])
