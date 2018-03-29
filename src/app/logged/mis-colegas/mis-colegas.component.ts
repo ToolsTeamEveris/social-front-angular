@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Persona } from '../shared/Entidades/persona';
 import { PersonaServiceService } from '../shared/Services/persona-service.service';
 import { Subject } from 'rxjs/Subject';
@@ -10,40 +10,40 @@ import { Subject } from 'rxjs/Subject';
 })
 export class MisColegasComponent implements OnInit {
   searchTerm$ = new Subject<string>();
-  user: Persona;
   coleguillas: Persona[] = [];
   coleguillasPendientes: Persona[] = [];
+  coleguillasSolicitados: Persona[] = [];
   filteredList: Persona[] = null;
 
   constructor( private personaService: PersonaServiceService ) { 
     this.personaService.getPersonByTerm(this.searchTerm$)
       .subscribe( result => this.filteredList = result);
-  }
+    }
+    
+    ngOnInit() {
+      this.personaService.getFriends().subscribe(
+        result => {
+          this.coleguillas = result.amigos;
+          this.coleguillasPendientes = result.pendientes;
+          this.coleguillasSolicitados = result.solicitados;
+        }
+      )
+    }
 
-  ngOnInit() {
-    this.getColeguillasPendientes();
-    this.getColeguillas();
-  }
-
-  getColeguillas() {
-    this.personaService.getPersons().subscribe(
-      res => {
-        this.coleguillas = res;
-      });
-  }
-  getColeguillasPendientes() {
-    this.personaService.getPersonPen().subscribe(
-      res => {
-        this.coleguillasPendientes = res;
-      });
-
-  }
-  getUser() {
-    this.personaService.getLoggedUser().subscribe(
-      res => {
-        this.user = res;
-      }
+  cancelarSolicitud( persona: Persona ) {
+    this.coleguillasSolicitados = this.coleguillasSolicitados.filter(
+      coleguilla => coleguilla.id != persona.id
     );
+    
   }
+
+  aceptarSolicitud( persona: Persona ) {
+    this.coleguillasPendientes = this.coleguillasPendientes.filter(
+      coleguilla => coleguilla.id != persona.id
+    );
+
+    this.coleguillas.push(persona);
+  }
+
 
 }

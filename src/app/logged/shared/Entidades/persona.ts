@@ -3,6 +3,6 @@ export interface Persona {
     name: string;
     surname: string;
     picture: string;
-    
+    username?: string;
 }
 

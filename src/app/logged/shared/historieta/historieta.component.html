@@ -8,8 +8,12 @@
         <small>{{post.creator.name}} {{post.creator.surname}}</small>
       </div>
     </div>
-    <h2>POST</h2>
-    <h4 class="card-title">{{post.text}}</h4>
+
+    <div class="d-block ml-0">
+      <img class="img-fluid mr-3 float-left" src={{post.creator.picture}} alt="Card image cap">
+      <p class="card-text">{{post.text}}</p>
+    </div>
+
   </div>
   <div>
       <button class="btn btn-success mr-3 float-right" (click)="showHideMap()">

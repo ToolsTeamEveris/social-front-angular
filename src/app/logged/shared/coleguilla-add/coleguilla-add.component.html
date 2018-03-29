@@ -1,13 +1,16 @@
-<div class="row contColeguilla mr-0" >
+<div class="row contColeguilla" >
   <div class="col-xs-12 col-sm-4 col-md-6  imgColeguilla">
-    <img class="img-fluid" src={{col.picture}} alt="">
+    <img class="img-fluid" src={{col.picture}} alt="perfil">
   </div>
   <div class="col-xs-12 col-sm-8 col-md-6 contColeguilla2">
-    <div class="col-xs-6 pt-2 h-50 text-left">
-      <span>{{col.name}}</span>
+    <div>
+      <span *ngIf="!solicitada">Solicitud de amistad de: </span>
+      <span>{{ col.name }} {{ col.surname }}</span>
     </div>
-    <div class="col-xs-6 h-50">
-      <a class="btn btn-outline-warning w-100 text-truncate" href="#">Amistad Solicitada</a>
+    <div class="row">
+      <button *ngIf="solicitada" class="btn btn-outline-warning text-truncate" (click)="cancelarSolicitud()">Cancelar solicitud</button>
+      <button *ngIf="!solicitada" class="btn btn-outline-success text-truncate col-md-6" (click)="aceptarSolicitud()">Aceptar</button>
+      <button *ngIf="!solicitada" class="btn btn-outline-danger text-truncate col-md-6" (click)="aceptarSolicitud()">Cancelar</button>
     </div>
  </div>
 
