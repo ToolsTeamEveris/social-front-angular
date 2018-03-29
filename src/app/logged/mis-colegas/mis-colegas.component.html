@@ -14,13 +14,13 @@
 
             <li  *ngFor="let coleguilla of coleguillasPendientes" class="list-group-item list-group-item-action">
                 <app-coleguilla-add
-                [solicitada]="false" [col]="coleguilla" (cancel)="cancelarSolicitud($event)" (accept)="aceptarSolicitud($event)">
+                [solicitada]="false" [col]="coleguilla" (cancel)="rechazarSolicitud($event)" (accept)="aceptarSolicitud($event)">
 
                 </app-coleguilla-add>
             </li>
             
             <li class="list-group-item list-group-item-action" *ngFor="let coleguilla of coleguillas">
-                <app-coleguilla [col]="coleguilla"></app-coleguilla>
+                <app-coleguilla [col]="coleguilla" (cancel)="eliminarAmigo($event)"></app-coleguilla>
             </li>
         </ul>   
    
