@@ -12,7 +12,7 @@ import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
       [
         {
           path: '', component: LoggedComponent, children: [
-            { path: 'my', component: MisCosasComponent },
+            { path: 'my', component: MisCosasComponent},
             { path: 'historietas', component: MisHistorietasComponent},
             { path: 'colegas', component: MisColegasComponent}
           ]
