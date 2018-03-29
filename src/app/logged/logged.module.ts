@@ -20,7 +20,10 @@ import { MisDatosComponent } from './cosas/mis-datos/mis-datos.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
+
 import { PageUpdateduser } from './shared/Services/updated-user';
+
+import { HistorietasService } from './shared/Services/historietas.service';
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import { PageUpdateduser } from './shared/Services/updated-user';
     MisHistorietasComponent
   ],
   providers: [
-    PageUpdateduser
+    PageUpdateduser,
+    HistorietasService
   ]
 })
 export class LoggedModule { }

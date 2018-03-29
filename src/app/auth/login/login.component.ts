@@ -25,4 +25,16 @@ export class LoginComponent implements OnInit {
       );
   }
 
+  loggedGoogle(user: gapi.auth2.GoogleUser) {
+    console.log(user.getAuthResponse(true).access_token);
+    console.log(user.getBasicProfile().getName());
+    console.log(user.getBasicProfile().getEmail());
+    console.log(user.getBasicProfile().getImageUrl());
+
+  }
+
+  showError(event) {
+    
+  }
+
 }

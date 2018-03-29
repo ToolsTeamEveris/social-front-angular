@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import { SERVER } from '../../app.constants';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 export class AuthService {
@@ -42,15 +41,12 @@ export class AuthService {
     if (this.logged) {
       return Observable.of(true);
     } else if (localStorage.getItem('token')) {
-      /*return this.http.get<{ok: boolean}>(`${this.urlServer}auth/token`)
+      return this.http.get<{ok: boolean}>(`${SERVER}person/0`)
         .map( response => {
-          if (response.ok) {
-            this.logged = true;
-            return true;
-          }
-          return false;
-        });*/
-        return Observable.of(true);
+          this.logged = true;
+          return true;
+        })
+        .catch( () => Observable.of(false) );
     } else {
       return Observable.of(false);
     }
