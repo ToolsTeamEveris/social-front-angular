@@ -57,6 +57,7 @@ export class PublicarHistorietaComponent implements OnInit {
   publicarHistorieta() {
     console.log(this.post);
     this.histService.savePost(this.post).subscribe();
+    location.reload();
   }
 
   //Convert image to base64
