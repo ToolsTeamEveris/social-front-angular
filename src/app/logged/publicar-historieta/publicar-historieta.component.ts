@@ -77,13 +77,8 @@ export class PublicarHistorietaComponent implements OnInit {
     if (content.length <= 140)
       return content.replace(/something/g, 'new value');
     else {
-<<<<<<< HEAD
-      this.historia = content.slice(0,140);
-      content = this.historia;
-=======
       this.post.text = content.slice(0,140);
       content = this.post.text;
->>>>>>> postservices
       return content.replace(/something/g, 'new value');
     }
   }
