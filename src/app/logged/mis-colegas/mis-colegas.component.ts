@@ -33,8 +33,19 @@ export class MisColegasComponent implements OnInit {
   cancelarSolicitud( persona: Persona ) {
     this.coleguillasSolicitados = this.coleguillasSolicitados.filter(
       coleguilla => coleguilla.id != persona.id
+    );  
+  }
+  
+  rechazarSolicitud( persona: Persona ) {
+    this.coleguillasPendientes = this.coleguillasPendientes.filter(
+      coleguilla => coleguilla.id != persona.id
     );
-    
+  }
+  
+  eliminarAmigo( persona: Persona ) {
+    this.coleguillas = this.coleguillas.filter(
+      coleguilla => coleguilla.id != persona.id
+    );
   }
 
   aceptarSolicitud( persona: Persona ) {
