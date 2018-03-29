@@ -3,12 +3,14 @@
     <img class="img-fluid" src={{col.picture}} alt="perfil">
   </div>
   <div class="col-xs-12 col-sm-8 col-md-6 contColeguilla2">
-    <div class="col-xs-6 pt-2 h-50 text-left">
+    <div>
+      <span *ngIf="!solicitada">Solicitud de amistad de: </span>
       <span>{{ col.name }} {{ col.surname }}</span>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <button *ngIf="solicitada" class="btn btn-outline-warning btn-block text-truncate" (click)="cancelarSolicitud()">Cancelar solicitud</button>
-      <button *ngIf="!solicitada" class="btn btn-outline-warning btn-block text-truncate" (click)="aceptarSolicitud()">Aceptar amistad</button>
+    <div class="row">
+      <button *ngIf="solicitada" class="btn btn-outline-warning text-truncate" (click)="cancelarSolicitud()">Cancelar solicitud</button>
+      <button *ngIf="!solicitada" class="btn btn-outline-success text-truncate col-md-6" (click)="aceptarSolicitud()">Aceptar</button>
+      <button *ngIf="!solicitada" class="btn btn-outline-danger text-truncate col-md-6" (click)="aceptarSolicitud()">Cancelar</button>
     </div>
  </div>
 

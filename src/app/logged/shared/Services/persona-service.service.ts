@@ -27,11 +27,6 @@ export class PersonaServiceService {
     surname: '',
     picture: '',
   };
-  relations = {
-    amigos: [],
-    solicitados: [],
-    pendientes: []
-  };
 
   constructor( private http:HttpClient, private auth: AuthService ) {
     this.http.get(`${SERVER}person/me`).subscribe( (response: Persona) => {
@@ -64,18 +59,24 @@ export class PersonaServiceService {
   }
 
   getFriends(): Observable<any> {
+    let relations = {
+      amigos: [],
+      solicitados: [],
+      pendientes: []
+    };
+
     return this.http.get(`${SERVER}friend`).map( (response: any[]) => {
       console.log(response);
       response.map( relation => {
         if (relation.friendPK.receiver_user.username == this.user.username) {
-          if (relation.accepted) this.relations.amigos.push(relation.friendPK.sender_user);
-          else this.relations.pendientes.push(relation.friendPK.sender_user);
+          if (relation.accepted) relations.amigos.push(relation.friendPK.sender_user);
+          else relations.pendientes.push(relation.friendPK.sender_user);
         } else {
-          if (relation.accepted) this.relations.amigos.push(relation.friendPK.receiver_user);
-          else this.relations.solicitados.push(relation.friendPK.receiver_user);
+          if (relation.accepted) relations.amigos.push(relation.friendPK.receiver_user);
+          else relations.solicitados.push(relation.friendPK.receiver_user);
         }
       })
-      return this.relations;
+      return relations;
     })
   }
 

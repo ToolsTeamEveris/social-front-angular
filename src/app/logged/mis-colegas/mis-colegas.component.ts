@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Persona } from '../shared/Entidades/persona';
 import { PersonaServiceService } from '../shared/Services/persona-service.service';
 import { Subject } from 'rxjs/Subject';
@@ -18,17 +18,17 @@ export class MisColegasComponent implements OnInit {
   constructor( private personaService: PersonaServiceService ) { 
     this.personaService.getPersonByTerm(this.searchTerm$)
       .subscribe( result => this.filteredList = result);
-  }
-
-  ngOnInit() {
-    this.personaService.getFriends().subscribe(
-      result => {
-        this.coleguillas = result.amigos;
-        this.coleguillasPendientes = result.pendientes;
-        this.coleguillasSolicitados = result.solicitados;
-      }
-    )
-  }
+    }
+    
+    ngOnInit() {
+      this.personaService.getFriends().subscribe(
+        result => {
+          this.coleguillas = result.amigos;
+          this.coleguillasPendientes = result.pendientes;
+          this.coleguillasSolicitados = result.solicitados;
+        }
+      )
+    }
 
   cancelarSolicitud( persona: Persona ) {
     this.coleguillasSolicitados = this.coleguillasSolicitados.filter(

@@ -12,7 +12,7 @@ import { LoginActivateGuardService } from '../guards/login-activate-guard.servic
     RouterModule.forChild(
       [
         {
-          path: '', component: LoggedComponent, children: [
+          path: '', canActivate:[LoginActivateGuardService], component: LoggedComponent, children: [
             { 
               path: 'my', 
               canActivate: [LoginActivateGuardService], 
