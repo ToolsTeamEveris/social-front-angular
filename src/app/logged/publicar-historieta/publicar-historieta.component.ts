@@ -38,7 +38,6 @@ export class PublicarHistorietaComponent implements OnInit {
       created_at: '',
       text: '',
       picture:'',
-      like: '' ,
       lat: 0,
       lng: 0   
     };

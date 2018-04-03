@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../Entidades/post';
+import { Post, Type } from '../Entidades/post';
 import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -8,16 +8,29 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { HttpClient } from '@angular/common/http';
 import { SERVER, IMG_USER_PATH } from '../../../app.constants';
+import { PersonaServiceService } from './persona-service.service';
 
 @Injectable()
 export class HistorietasService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private personaService: PersonaServiceService) {
+   }
 
   // Get all post
   getAllPost(): Observable<Post[]> {
     return this.http.get(`${SERVER}post`).map((post: Post[]) => {
       post.map(p => {
+        let isLike = false;
+        let typeLike = Type.COOL;
+        p.likes.map( like => {
+          if (like.creator.id == this.personaService.user.id) {
+            isLike = true;
+            typeLike = like.type;
+          }
+        });
+        p.likeMe = isLike;
+        p.like = typeLike;
+
         console.log(post);
         p.creator.picture = 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg';
         //p.creator.picture = `${IMG_USER_PATH}${p.creator.picture}`;
@@ -65,6 +78,30 @@ export class HistorietasService {
   //Update post
   updatePost(post: Post) : Observable<{}> {
     return this.http.put(`${SERVER}post/${post.id}`, post)
+    .catch(error => {
+      throw(error)
+    });
+  }
+
+  //Report post
+  reportPost(post: Post) : Observable<{}> {
+    return this.http.put(`${SERVER}post/reported/${post.id}`, post)
+    .catch(error => {
+      throw(error)
+    });
+  }
+
+  //Unreport post
+  unReportPost(post: Post) : Observable<{}> {
+    return this.http.put(`${SERVER}post/unreported/${post.id}`, post)
+    .catch(error => {
+      throw(error)
+    });
+  }
+
+  //AddLike
+  addLike(post: Post) : Observable<{}> {
+    return this.http.post(`${SERVER}post/${post.id}/like`, post)
     .catch(error => {
       throw(error)
     });
