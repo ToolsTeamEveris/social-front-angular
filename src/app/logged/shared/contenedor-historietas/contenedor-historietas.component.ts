@@ -11,8 +11,9 @@ export class ContenedorHistorietasComponent implements OnInit {
 
   // @Input() historietas: Post[];
   historietas: Post[] = [];
+  //@Input() post: Post;
   constructor(private histService: HistorietasService) { }
-
+ 
   ngOnInit() {
     this.getAllPost();
   }
@@ -25,4 +26,10 @@ export class ContenedorHistorietasComponent implements OnInit {
     (error: string) => console.log('Error loading post: ' + error));
   }
   
+  //intento de refrescar la lista cuando se borra
+  actualizarLista( post: Post ) {
+    this.historietas = this.historietas.filter(
+      p => p.id != post.id
+    );  
+  }
 }

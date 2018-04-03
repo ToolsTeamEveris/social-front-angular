@@ -10,6 +10,8 @@
     <div>
       <span>{{post.text}}</span>
     </div>
+    <span *ngIf="post.reported" class="text-danger mr-3 float-right">
+      <i class="fas fa-ban mr-3"></i>Post Reported</span>
   </div>
   <div>
       <button class="btn btn-success mr-3 float-right" (click)="showHideMap()">
@@ -18,6 +20,8 @@
         <i class="fas fa-trash-alt mr-3"></i>Delete</button>
       <button class="btn btn-info mr-3 float-right" (click)="showHideEdit()">
         <i class="fas fa-edit mr-3"></i>Edit</button>
+        <button class="btn btn-warning mr-3 float-right" (click)="report()">
+          <i class="fas fa-ban mr-3"></i>Report</button>
   </div>
   <!-- hidden edit-->
   <div *ngIf="edit" class="card mt-4">
@@ -41,17 +45,24 @@
     <span class="ml-3 float-left"> {{post.created_at | date:'dd/MM/yyyy'}}</span>
 
     <small>
-      <a class="float-right" href="">
-        <i class="fas fa-hand-peace"></i>
-      </a>
-      <a class="mr-3 float-right" href="">
-        <i class="fas fa-hand-rock"></i>
-      </a>
-      <a class="mr-3 float-right" href="">
-        <i class="fas fa-thumbs-down"></i>
-      </a>
+      <!-- <span class="float-right" (click)="cool()">
+        <i class="fas fa-hand-peace" [ngClass]="{'text-primary': !_cool, 'text-danger': _cool}"></i>
+      </span> -->
+      <span class="float-right" (click)="cool()">
+        <i *ngIf="_cool" class="fas fa-hand-peace text-danger"></i>
+        <i *ngIf="!_cool" class="fas fa-hand-peace text-primary"></i>
+      </span>
+      <span class="mr-3 float-right" (click)="dontcare()">
+        <i *ngIf="_dontcare" class="fas fa-hand-rock text-danger"></i>
+        <i *ngIf="!_dontcare" class="fas fa-hand-rock text-primary"></i>
+      </span>
+      <span class="mr-3 float-right" (click)="arrg()">
+        <i *ngIf="_arrg" class="fas fa-thumbs-down text-danger"></i>
+        <i *ngIf="!_arrg" class="fas fa-thumbs-down text-primary"></i>
+      </span>
     </small>
   </div>
+  {{post.type}}
   <!-- hidden map-->
   <div *ngIf="map" class="card mt-4">
     <div class="card-body p-0">

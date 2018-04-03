@@ -6,6 +6,7 @@ import { MisCosasComponent } from './cosas/mis-cosas/mis-cosas.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
 import { LoginActivateGuardService } from '../guards/login-activate-guard.service';
+import { Historieta2Component } from './shared/historieta2/historieta2.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,11 @@ import { LoginActivateGuardService } from '../guards/login-activate-guard.servic
               path: 'historietas',  
               canActivate: [LoginActivateGuardService],
               component: MisHistorietasComponent
+            },
+            { 
+              path: 'historietas2',  
+              canActivate: [LoginActivateGuardService],
+              component:  Historieta2Component
             },
             { 
               path: 'colegas',  

@@ -1,7 +1,7 @@
 <div id="contenedorH">
   <ul class="list-group pl-0 mt-4">
     <li class="list-group-item border-0 mb-2 bg-transparent" *ngFor="let post of historietas">
-      <app-historieta [post]= "post" ></app-historieta>
+      <app-historieta [post]= "post" (refresh)="actualizarLista($event)"></app-historieta>
     </li>
   </ul>
 </div>

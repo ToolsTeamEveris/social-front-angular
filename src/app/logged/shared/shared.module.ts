@@ -10,6 +10,7 @@ import { HistorietaComponent } from './historieta/historieta.component';
 import { AgmCoreModule } from '@agm/core';
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
 import { FormsModule } from '@angular/forms';
+import { Historieta2Component } from './historieta2/historieta2.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     ColeguillaComponent,
     ColeguillaAddComponent,
     //MisHistorietasComponent,
-    HistorietaComponent
+    HistorietaComponent,
+    Historieta2Component
   ],
   exports: [
     ContenedorColeguillasComponent,
