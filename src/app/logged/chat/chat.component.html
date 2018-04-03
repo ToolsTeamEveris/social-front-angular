@@ -1,18 +1,17 @@
-<div class="container">
-  <div>
-      <input type="text" id="from" name="from" [(ngModel)]="from" placeholder="Choose a nickname"/>
+<div style="text-align:center">
+    <h1>
+      Welcome to {{title}}!
+    </h1>
+    <div class="container" style="background-color: white; height: 200px;">
+        <div *ngFor="let msg of messages">
+            {{msg}}
+        </div>
+    </div>
   </div>
-  <br />
-  <div>
-      <button id="connect" (click)="connect()">Connect</button>
-      <button id="disconnect" disabled="disabled" onclick="disconnect();">
-          Disconnect
-      </button>
+  <div class="container">
+    <div class="send-button">
+      <input id="input" type="text" [(ngModel)]="message">
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  
   </div>
-  <br />
-  <div id="conversationDiv">
-      <input type="text" id="text" [(ngModel)]="text" name="text" placeholder="Write a message..."/>
-      <button id="sendMessage" onclick="sendMessage();">Send</button>
-      <p id="response"></p>
-  </div>
-</div>

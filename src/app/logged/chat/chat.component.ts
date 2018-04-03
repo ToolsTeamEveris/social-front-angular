@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import SockJS from 'sockjs-client';
-import Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
+import * as Stomp from 'stompjs';
 
 @Component({
   selector: 'app-chat',
@@ -8,37 +8,38 @@ import Stomp from 'stompjs';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  from: string = '';
-  text: string = '';
-  stompClient = null;
+  title = 'WebSockets chat';
+  private serverUrl = 'http://localhost:8080/socket'
+  messages: string[];
+  message: string = '';
+  private stompClient;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() { 
+    this.initializeWebSocketConnection();
   }
 
-  connect() {
-    let socket = new SockJS('http://localhost:8080/chat');
-    this.stompClient = Stomp.over(socket);
-    this.stompClient.connect({}, function(frame) {
-      console.log('Connected: ' + frame);
-      this.stompClient.subscribe('/topic/messages', function(messageOutput) {
-        this.showMessageOutput(JSON.parse(messageOutput.body));
+  ngOnInit() {
+    this.messages = [];
+  }
+
+  initializeWebSocketConnection(){
+    let ws = new SockJS(this.serverUrl);
+    this.stompClient = Stomp.over(ws);
+    let that = this;
+    this.stompClient.connect({}, frame => {
+      that.stompClient.subscribe("/chat", (message) => {
+        if(message.body) {
+          console.log(this.messages);
+          this.messages.push(message.body);
+        }
       });
     });
   }
 
-  showMessageOutput(messageOutput) {
-    var response = document.getElementById('response');
-    var p = document.createElement('p');
-    p.style.wordWrap = 'break-word';
-    p.appendChild(document.createTextNode(messageOutput.from + ": " 
-      + messageOutput.text + " (" + messageOutput.time + ")"));
-    response.appendChild(p);
-  }
-
   sendMessage() {
-    this.stompClient.send("/app/chat", {}, {from: this.from, text: this.text});
+    console.log(this.message);
+    this.stompClient.send("/app/send/message", {}, this.message);
+    this.message = '';
   }
 
 }
