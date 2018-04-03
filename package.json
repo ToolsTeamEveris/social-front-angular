@@ -27,12 +27,17 @@
     "@types/fb": "0.0.23",
     "@types/gapi": "0.0.35",
     "@types/gapi.auth2": "0.0.47",
-    "angular-font-awesome": "^3.1.2",
     "@types/googlemaps": "^3.30.8",
+    "angular-font-awesome": "^3.1.2",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "ng2-stomp-service": "^1.2.2",
     "ngx-markdown-editor": "^1.1.7",
     "rxjs": "^5.5.6",
+    "sockjs": "^0.3.19",
+    "sockjs-client": "^1.1.4",
+    "stomp": "^0.1.1",
+    "stompjs": "^2.3.3",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
