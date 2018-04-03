@@ -76,6 +76,11 @@ export class PersonaServiceService {
           else relations.solicitados.push(relation.friendPK.receiver_user);
         }
       })
+
+      relations.amigos.map( p => p.picture = '/assets/user.png');
+      relations.solicitados.map( p => p.picture = '/assets/user.png');
+      relations.pendientes.map( p => p.picture = '/assets/user.png');
+
       return relations;
     })
   }
@@ -90,6 +95,7 @@ export class PersonaServiceService {
     if (term.trim() == '') return Observable.of(null);
 
     return this.http.get(`${SERVER}person/search/${term}`).map( (response:any) => {
+      response.forEach( p => p.picture = '/assets/user.png')
       return response;
     });
   }

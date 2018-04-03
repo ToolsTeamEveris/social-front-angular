@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Persona } from '../shared/Entidades/persona';
 import { PersonaServiceService } from '../shared/Services/persona-service.service';
 import { Subject } from 'rxjs/Subject';
+import { ModalComponent } from '../../utils/modal/modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-mis-colegas',
@@ -14,10 +16,10 @@ export class MisColegasComponent implements OnInit {
   coleguillasPendientes: Persona[] = [];
   coleguillasSolicitados: Persona[] = [];
   filteredList: Persona[] = null;
+  selected: Persona;
 
-  constructor( private personaService: PersonaServiceService ) { 
-    this.personaService.getPersonByTerm(this.searchTerm$)
-      .subscribe( result => this.filteredList = result);
+  constructor( private personaService: PersonaServiceService, private modal: NgbModal ) { 
+    
     }
     
     ngOnInit() {
@@ -28,6 +30,12 @@ export class MisColegasComponent implements OnInit {
           this.coleguillasSolicitados = result.solicitados;
         }
       )
+
+      this.personaService.getPersonByTerm(this.searchTerm$)
+      .subscribe( result => {
+        this.filteredList = result;
+      });
+
     }
 
   cancelarSolicitud( persona: Persona ) {
@@ -55,6 +63,73 @@ export class MisColegasComponent implements OnInit {
 
     this.coleguillas.push(persona);
   }
+
+  showDetails( colega: Persona ) {
+    this.selected = colega;
+    this.selected.amigo = this.coleguillas.find( p => p.id == colega.id) != null ? true : false;
+    this.selected.pendiente = this.coleguillasPendientes.find( p => p.id == colega.id) != null ? true : false;
+    this.selected.solicitado = this.coleguillasSolicitados.find( p => p.id == colega.id) != null ? true : false;
+  }
+
+  eliminar() {
+    this.showModal('Borrar', `¿Desea eliminar a ${this.selected.name} de su lista de amigos?`).then(
+      response => {
+        if (response) {
+          this.personaService.refuseFriend(this.selected.id).subscribe(
+            respuesta => {
+              if(respuesta) {
+                this.eliminarAmigo(this.selected);
+                this.selected = null;
+              }
+            }
+          );
+        }
+      }
+    )
+  }
+
+  cancelar() {
+    this.showModal('Cancelar', '¿Desea cancelar la colicitud de amistad?').then(
+      response => {
+        if (response) {
+          this.personaService.refuseFriend(this.selected.id).subscribe(
+            respuesta => {
+              this.cancelarSolicitud(this.selected);
+              this.selected = null;
+            }
+          );
+        }
+      }
+    )
+  }
+
+  aceptar() {
+    this.personaService.acceptFriend(this.selected.id).subscribe( 
+      respuesta => {
+        if (respuesta) {
+          this.aceptarSolicitud(this.selected);
+          this.selected.pendiente = false;
+          this.selected.amigo = true;
+        }
+        else console.log(respuesta)
+      }
+    );
+  }
+
+
+  showModal(title: string, body: string) {
+    const modalRef = this.modal.open(ModalComponent);
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.body = body;
+
+    modalRef.componentInstance.info = false;
+
+    return modalRef.result.then( response =>  response).catch(() => null);
+  }
+
+
+
+
 
 
 }
