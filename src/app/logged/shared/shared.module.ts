@@ -9,10 +9,12 @@ import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.componen
 import { HistorietaComponent } from './historieta/historieta.component';
 import { AgmCoreModule } from '@agm/core';
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC2sYQIcXgK0jbglbKQHc_ImsBieJwohHQ',
       libraries: ['places']

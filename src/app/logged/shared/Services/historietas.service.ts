@@ -62,6 +62,13 @@ export class HistorietasService {
       });
   }
 
+  //Update post
+  updatePost(post: Post) : Observable<{}> {
+    return this.http.put(`${SERVER}post/${post.id}`, post)
+    .catch(error => {
+      throw(error)
+    });
+  }
 
   //Delete post
   deletePost(id: number) {
