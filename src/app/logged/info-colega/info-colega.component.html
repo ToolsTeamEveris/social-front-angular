@@ -1,6 +1,6 @@
-<div class="container text-left">
+<div class="container text-left mt-5" *ngIf="col">
   <span>Info Coleguilla:</span>
-  <div class="contenedorInfo">
+  <div class="container contenedorInfo">
       <span class="col-md-12 mb-3 ml-3">{{col.name}} {{col.surname}}</span>
     <div class="row mb-3 ml-3 ">
       <img class="col-md-4" src="{{col.picture}}" alt="">
@@ -10,7 +10,10 @@
         <p>{{col.surname}}</p>
       </div>
       <div class=" col-md-8 text-center btn-wrap" *ngIf="!isFriend">
-        <a name="" id="" class="btn btn-secondary btn-mas" href="#" role="button">Solicitar Amistad</a>
+          <button *ngIf="solicitada" class="btn btn-outline-warning text-truncate" (click)="cancelarSolicitud()">Cancelar solicitud</button>
+          <button *ngIf="!solicitada" class="btn btn-outline-success text-truncate col-md-6" (click)="aceptarSolicitud()">Aceptar</button>
+          <button *ngIf="!solicitada" class="btn btn-outline-danger text-truncate col-md-6" (click)="cancelarSolicitud()">Cancelar</button>
+          <button *ngIf="!solicitada" class="btn btn-primary" (click)="solicitarAmistad()">Solicitar Amistad</button>
       </div>
     </div>
   </div>

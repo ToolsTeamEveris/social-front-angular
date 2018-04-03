@@ -22,6 +22,11 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
 import { ChatComponent } from './chat/chat.component';
 
+import { PageUpdateduser } from './shared/Services/updated-user';
+
+import { HistorietasService } from './shared/Services/historietas.service';
+
+
 @NgModule({
   imports: [
     LoggedRoutingModule,
@@ -45,6 +50,8 @@ import { ChatComponent } from './chat/chat.component';
     ChatComponent
   ],
   providers: [
+    PageUpdateduser,
+    HistorietasService
   ]
 })
 export class LoggedModule { }

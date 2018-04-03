@@ -1,7 +1,7 @@
 <div class="row w-100 bg-white position-relative" id="contenedor_usuario" [class.encoger]="!isOnTop">
-  <img class="w-25 position-absolute" src="{{persona.picture}}" alt="Card image cap" [class.encogerimg]="!isOnTop">
+  <img class="w-25 position-absolute" src="{{persona?.picture}}" alt="Card image cap" [class.encogerimg]="!isOnTop">
   <div class="pos w-100 col-xs-4" [class.movetxt]="!isOnTop">
-    <h5 class="card-title text-left text-truncate">{{persona.name}}</h5>
-    <p class="card-text text-left text-truncate">{{persona.surname}}</p>
+    <h5 class="card-title text-left text-truncate">{{persona?.name}}</h5>
+    <p class="card-text text-left text-truncate">{{persona?.surname}}</p>
   </div>
 </div>

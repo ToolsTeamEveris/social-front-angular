@@ -3,6 +3,9 @@ export interface Persona {
     name: string;
     surname: string;
     picture: string;
-    
+    username?: string;
+    amigo?: boolean;
+    pendiente?: boolean;
+    solicitado?: boolean;
 }
 

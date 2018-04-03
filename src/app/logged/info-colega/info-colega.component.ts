@@ -8,14 +8,9 @@ import { Persona } from '../shared/Entidades/persona';
 })
 export class InfoColegaComponent implements OnInit {
 
-  //@Input() col: Persona;
-  col: Persona = {
-    id: 7,
-    name: 'Paca',
-    surname: 'Abadia',
-    picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
-  }
+  @Input() col: Persona;
   isFriend: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {
