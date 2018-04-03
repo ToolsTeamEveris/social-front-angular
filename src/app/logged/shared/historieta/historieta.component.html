@@ -2,27 +2,40 @@
   <img class="card-img-top" [src]="post.picture">
   <div class="card-body">
     <div class="float-left mr-4 text-center">
-
       <img class="rounded-circle" style="width: 80px; height: 70px;" [src]="post.creator.picture" alt="">
       <div>
         <small>{{post.creator.name}} {{post.creator.surname}}</small>
       </div>
     </div>
-
-    <div class="d-block ml-0">
-      <img class="img-fluid mr-3 float-left" src={{post.creator.picture}} alt="Card image cap">
-      <p class="card-text">{{post.text}}</p>
+    <div>
+      <span>{{post.text}}</span>
     </div>
-
   </div>
   <div>
       <button class="btn btn-success mr-3 float-right" (click)="showHideMap()">
           <i class="fas fa-map-marker-alt mr-3 text-danger"></i>Show Map</button>
       <button class="btn btn-danger mr-3 float-right" (click)="removePost()">
         <i class="fas fa-trash-alt mr-3"></i>Delete</button>
-      <button class="btn btn-info mr-3 float-right" (click)="EditPost()">
+      <button class="btn btn-info mr-3 float-right" (click)="showHideEdit()">
         <i class="fas fa-edit mr-3"></i>Edit</button>
   </div>
+  <!-- hidden edit-->
+  <div *ngIf="edit" class="card mt-4">
+    <div class="card-body p-0">
+      <div id="editForm">
+        <form (ngSubmit)="editPost()">
+          <div class="form-group">
+            <label for="text">Edit Text</label>
+            <input type="text" class="form-control" name="title" [(ngModel)]="post.text" required minlength="5" placeholder="Enter the post text"
+                #text="ngModel" [ngClass]="{'is-invalid': text.invalid && text.touched, 'is-valid': text.valid && text.touched}">
+            <div class="invalid-feedback">text is required and at least 5 characters.</div>
+          </div>
+          <button type="submit" class="btn btn-info">Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- ******** -->
   <div class="card-footer mt-1">
 
     <span class="ml-3 float-left"> {{post.created_at | date:'dd/MM/yyyy'}}</span>

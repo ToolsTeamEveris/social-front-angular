@@ -59,10 +59,10 @@
                 <img class="rounded-circle profile-img" src="{{selected.picture}}" alt="profile">
 
                 <div class="text-center btn-wrap">
-                    <button *ngIf="selected.solicitado" class="btn btn-outline-warning text-truncate" (click)="cancelar()">Cancelar solicitud</button>
-                    <button *ngIf="selected.pendiente" class="btn btn-outline-success text-truncate col-md-6" (click)="aceptar()">Aceptar amistad</button>
-                    <button *ngIf="selected.pendiente" class="btn btn-outline-danger text-truncate col-md-6" (click)="cancelar()">Cancelar</button>
-                    <button *ngIf="selected.amigo" class="btn btn-outline-danger text-truncate col-md-6" (click)="eliminar()">Eliminar amigo</button>
+                    <button *ngIf="selected.solicitado" class="btn btn-warning text-truncate" (click)="cancelar()">Cancelar solicitud</button>
+                    <button *ngIf="selected.pendiente" class="btn btn-success text-truncate" (click)="aceptar()">Aceptar amistad</button>
+                    <button *ngIf="selected.pendiente" class="btn btn-danger text-truncate" (click)="cancelar()">Cancelar</button>
+                    <button *ngIf="selected.amigo" class="btn btn-danger text-truncate" (click)="eliminar()">Eliminar amigo</button>
                     <button *ngIf="!selected.solicitado && !selected.pendiente && !selected.amigo" class="btn btn-primary" (click)="solicitarAmistad()">Solicitar Amistad</button>
                 </div>
               </div>

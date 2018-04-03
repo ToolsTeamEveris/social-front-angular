@@ -1,12 +1,15 @@
+import { Persona } from './../Entidades/persona';
 import { Injectable } from '@angular/core';
-import { Persona } from '../Entidades/persona';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
-import { HttpClient } from '@angular/common/http';
 import { SERVER } from "../../../app.constants";
 import { AuthService } from '../../../auth/services/auth.service';
 
@@ -19,14 +22,14 @@ export class PersonaServiceService {
     surname: 'Abadia',
     picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
   };
-
-  personas: Persona[] = [];
   user: Persona = {
     id: 0,
     name: '',
     surname: '',
     picture: '',
   };
+
+  personas: Persona[] = [];
 
   constructor( private http:HttpClient, private auth: AuthService ) {
     this.http.get(`${SERVER}person/me`).subscribe( (response: Persona) => {
@@ -39,9 +42,16 @@ export class PersonaServiceService {
       this.personas.push(person);
     }
   }
+
   //obtiene una persona por id
   getPerson(id: number): Observable<Persona> {
-      return Observable.of(this.persona);
+    return Observable.of(this.persona);
+  }
+
+
+  getPersonByToken(): Observable<Persona>{
+    return this.http.get(`${SERVER}persontoken`).map((user: Persona) => user)
+    .catch(err => Observable.throw("Error al obtener el usuario logeado: ", err));
   }
   
   //Obtener Usuario Logueado
@@ -56,6 +66,28 @@ export class PersonaServiceService {
   //Obtener amigos Pendientes
   getPersonPen(): Observable<Persona[]>{
     return Observable.of(this.personas);
+  }
+
+  getPersonByTerm(terms: Observable<string>): Observable<Persona[]> {
+    return terms.debounceTime(500)
+    .distinctUntilChanged()
+    .switchMap( term => this.findByTerm(term));
+  }
+              
+
+  private findByTerm(term: string): Observable<Persona[]> { 
+    if (term.trim() == '') return Observable.of(null);
+
+    return this.http.get(`${SERVER}person/search/${term}`).map( (response:any) => {
+      response.forEach( p => p.picture = '/assets/user.png')
+      return response;
+    });
+  }
+
+  updateDataUser( newDataUser ): Observable<Persona> {
+    let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put(`${SERVER}person`, newDataUser, options).map((usuario: Persona) => usuario)
+    .catch(error => Observable.throw(error));
   }
 
   getFriends(): Observable<any> {
@@ -83,21 +115,6 @@ export class PersonaServiceService {
 
       return relations;
     })
-  }
-
-  getPersonByTerm(terms: Observable<string>): Observable<Persona[]> {
-    return terms.debounceTime(500)
-      .distinctUntilChanged()
-      .switchMap( term => this.findByTerm(term));
-  }
-              
-  private findByTerm(term: string): Observable<Persona[]> { 
-    if (term.trim() == '') return Observable.of(null);
-
-    return this.http.get(`${SERVER}person/search/${term}`).map( (response:any) => {
-      response.forEach( p => p.picture = '/assets/user.png')
-      return response;
-    });
   }
 
   acceptFriend(id: number): Observable<boolean> {
