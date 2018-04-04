@@ -43,24 +43,28 @@
   <div class="card-footer mt-1">
 
     <span class="ml-3 float-left"> {{post.created_at | date:'dd/MM/yyyy'}}</span>
-
     <small>
-      <!-- <span class="float-right" (click)="cool()">
-        <i class="fas fa-hand-peace" [ngClass]="{'text-primary': !_cool, 'text-danger': _cool}"></i>
-      </span> -->
-      <span class="float-right" (click)="cool()">
-        <i *ngIf="_cool" class="fas fa-hand-peace text-danger"></i>
-        <i *ngIf="!_cool" class="fas fa-hand-peace text-primary"></i>
+      <span *ngIf="likes" class="float-right" (click)="cool()">
+        <i  class="fas fa-hand-peace text-danger mr-3"></i>
       </span>
-      <span class="mr-3 float-right" (click)="dontcare()">
-        <i *ngIf="_dontcare" class="fas fa-hand-rock text-danger"></i>
-        <i *ngIf="!_dontcare" class="fas fa-hand-rock text-primary"></i>
+      <span *ngIf="!likes" class="float-right" (click)="cool()">
+        <i  class="fas fa-hand-peace text-primary mr-3"></i>
       </span>
-      <span class="mr-3 float-right" (click)="arrg()">
-        <i *ngIf="_arrg" class="fas fa-thumbs-down text-danger"></i>
-        <i *ngIf="!_arrg" class="fas fa-thumbs-down text-primary"></i>
+
+      <span *ngIf="likes2" class="float-right" (click)="dontcare()">
+        <i class="fas fa-hand-rock text-danger mr-3"></i>
+      </span>
+      <span *ngIf="!likes2" class="float-right" (click)="dontcare()">
+        <i class="fas fa-hand-rock text-primary mr-3"></i>
+      </span>
+      <span *ngIf="likes3" class="float-right" (click)="arrg()">
+        <i class="fas fa-thumbs-down text-danger mr-3"></i>
+      </span>
+      <span *ngIf="!likes3" class="float-right" (click)="arrg()">
+        <i class="fas fa-thumbs-down text-primary mr-3"></i>
       </span>
     </small>
+    
   </div>
   {{post.type}}
   <!-- hidden map-->

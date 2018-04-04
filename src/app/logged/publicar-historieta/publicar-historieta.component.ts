@@ -39,7 +39,9 @@ export class PublicarHistorietaComponent implements OnInit {
       text: '',
       picture:'',
       lat: 0,
-      lng: 0   
+      lng: 0 ,
+      tipe: null
+       
     };
   }
   
