@@ -86,6 +86,7 @@ export class PersonaServiceService {
   }
 
   updateDataUser( newDataUser ): Observable<Persona> {
+    console.log(newDataUser);
     let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.put(`${SERVER}person`, newDataUser, options).map((usuario: Persona) => usuario)
     .catch(error => Observable.throw(error));

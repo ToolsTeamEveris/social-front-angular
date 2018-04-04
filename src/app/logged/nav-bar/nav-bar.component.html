@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-light bg-white mt-3 mb-5">
+  <nav class="navbar navbar-light mt-3 mb-5 navbar_trans">
     <img src="../../assets/icono.png" width="30" height="30" alt="">
     <a class="navbar-brand" [routerLink]="['/logged/historietas']">Mis Historietas</a>
     <a class="navbar-brand" [routerLink]="['/logged/my']">Mis cosas</a>
@@ -7,7 +7,5 @@
     <a class="navbar-brand" [routerLink]="['/logged/my']" href="#">Eventos</a>
     <a class="navbar-brand" [routerLink]="['/logged/chat']" href="#">Chat</a>
     <a class="navbar-brand" (click)="logout()" href="#">Logout</a>
-
-    <button class="btn btn-primary" (click)="showModal()">Launch Demo Modal</button>
   </nav>
 

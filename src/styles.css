@@ -2,11 +2,14 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:100);
 
+<<<<<<< HEAD
 body{
     background-color: rgb(229, 206, 147);
     font-size: 160%;
 }
 
+=======
+>>>>>>> personalizar_web
 #loading {
   display: inline-block;
   width: 50px;

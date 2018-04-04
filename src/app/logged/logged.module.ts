@@ -22,9 +22,8 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
 import { ChatComponent } from './chat/chat.component';
 
-import { PageUpdateduser } from './shared/Services/updated-user';
-
 import { HistorietasService } from './shared/Services/historietas.service';
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 
 
 @NgModule({
@@ -47,10 +46,13 @@ import { HistorietasService } from './shared/Services/historietas.service';
     InfoColegaComponent,
     MisColegasComponent,
     MisHistorietasComponent,
+<<<<<<< HEAD
     ChatComponent
+=======
+    MenuLateralComponent
+>>>>>>> personalizar_web
   ],
   providers: [
-    PageUpdateduser,
     HistorietasService
   ]
 })

@@ -21,13 +21,18 @@ export class VistaUsuarioComponent implements OnInit, OnDestroy {
     isOnTop = true;
 
     constructor(private pService: PersonaServiceService,
-                private updatedUser: PageUpdateduser) {
+                private updatedUser: PageUpdateduser,
+                private updateImageHeader: PageUpdateduser) {
     }
 
     ngOnInit() {
         this.updatedUser.person.subscribe((updatedPerson: Persona) => {
             console.log(updatedPerson);
             this.persona = updatedPerson;
+        });
+
+        this.updateImageHeader.imagen.subscribe(imagen => {
+            
         });
 
         window.addEventListener('scroll', this.scroll, true);
