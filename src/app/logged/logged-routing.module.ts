@@ -5,6 +5,7 @@ import { LoggedComponent } from './logged.component';
 import { MisCosasComponent } from './cosas/mis-cosas/mis-cosas.component';
 import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
 import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
+import { ChatComponent } from './chat/chat.component';
 import { LoginActivateGuardService } from '../guards/login-activate-guard.service';
 
 @NgModule({
