@@ -100,8 +100,8 @@ export class HistorietasService {
   }
 
   //AddLike
-  addLike(post: Post) : Observable<{}> {
-    return this.http.post(`${SERVER}post/${post.id}/like`, post)
+  addType(post: Post) : Observable<{}> {
+    return this.http.put(`${SERVER}post/${post.id}/tipe`, post)
     .catch(error => {
       throw(error)
     });
