@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import { SERVER } from '../../app.constants';
+import { Persona } from '../../logged/shared/Entidades/persona';
 
 @Injectable()
 export class AuthService {
@@ -26,9 +27,9 @@ export class AuthService {
       })
   }
 
-  register(username: string, password: string): Observable<boolean> {
+  register(person: Persona): Observable<boolean> {
     return this.http
-      .post(`${SERVER}auth/register`, { username, password })
+      .post(`${SERVER}auth/register`, person)
       .catch((resp: HttpErrorResponse) => Observable.throw('Error registrando usuario'))
       .map(resp => {
         console.log(resp);

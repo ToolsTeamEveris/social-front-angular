@@ -41,6 +41,19 @@ export class HistorietasService {
     }).catch(error => Observable.throw(error));
   }
 
+  // Get my post
+  getMyPost(): Observable<Post []> {
+    return this.http.get(`${SERVER}post/mine`).map((post: Post[]) => {
+      post.map(p => {
+        p.creator.picture = 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg';
+        //p.creator.picture = `${IMG_USER_PATH}${p.creator.picture}`;
+        return p;
+      })
+      return post;
+
+    }).catch(error => Observable.throw(error));
+  }
+
   // Get a concrete post
   getPost(id: number): Observable<Post> {
     return this.http.get(`${SERVER}post/${id}`)
