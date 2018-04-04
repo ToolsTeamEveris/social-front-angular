@@ -34,6 +34,7 @@ export class PersonaServiceService {
   constructor( private http:HttpClient, private auth: AuthService ) {
     this.http.get(`${SERVER}person/me`).subscribe( (response: Persona) => {
       this.user = response
+      this.user.picture = '/assets/user.png';
     });
     
     let person;
@@ -127,6 +128,12 @@ export class PersonaServiceService {
     return this.http.delete(`${SERVER}friend/${id}`).map(
       () => true
     ).catch( () => Observable.of(false) );
+  }
+
+  solicitarAmistad(id: number): Observable<Persona> {
+    return this.http.post(`${SERVER}friend/${id}`, '').map(
+      (response: {friendPK:{receiver_user: Persona}}) => response.friendPK.receiver_user
+    ).catch( error => Observable.throw(error) );
   }
 
 }

@@ -42,18 +42,24 @@ export class MisColegasComponent implements OnInit {
     this.coleguillasSolicitados = this.coleguillasSolicitados.filter(
       coleguilla => coleguilla.id != persona.id
     );  
+
+    this.selected = null;
   }
   
   rechazarSolicitud( persona: Persona ) {
     this.coleguillasPendientes = this.coleguillasPendientes.filter(
       coleguilla => coleguilla.id != persona.id
     );
+
+    this.selected = null;
   }
   
   eliminarAmigo( persona: Persona ) {
     this.coleguillas = this.coleguillas.filter(
       coleguilla => coleguilla.id != persona.id
     );
+
+    this.selected = null;
   }
 
   aceptarSolicitud( persona: Persona ) {
@@ -62,6 +68,7 @@ export class MisColegasComponent implements OnInit {
     );
 
     this.coleguillas.push(persona);
+    this.selected = null;
   }
 
   showDetails( colega: Persona ) {
@@ -79,7 +86,6 @@ export class MisColegasComponent implements OnInit {
             respuesta => {
               if(respuesta) {
                 this.eliminarAmigo(this.selected);
-                this.selected = null;
               }
             }
           );
@@ -117,17 +123,26 @@ export class MisColegasComponent implements OnInit {
   }
 
 
-  showModal(title: string, body: string) {
+  showModal(title: string, body: string, info?:boolean) {
     const modalRef = this.modal.open(ModalComponent);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.body = body;
 
-    modalRef.componentInstance.info = false;
+    modalRef.componentInstance.info = info;
 
     return modalRef.result.then( response =>  response).catch(() => null);
   }
 
-
+  solicitarAmistad() {
+    this.personaService.solicitarAmistad(this.selected.id).subscribe( 
+      response => {
+        response.picture = '/assets/user.png';
+        this.coleguillasSolicitados.push(response)
+      }, 
+      error => this.showModal('Error', 'No se ha podido mandar la petición de amistad', true),
+      () => this.selected = null
+    )
+  }
 
 
 
