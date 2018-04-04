@@ -1,0 +1,19 @@
+<div class="fixed-top w-25 h-100 bg-white menu_lateral p-4 close">
+
+  <div class="fa_close" (click)="showHide()">
+    <i class="fas fa-cog"></i>
+  </div>
+
+  <label class="w-100 mb-2 mt-4">Color</label>
+  <input class="w-100 mb-4" type="color" name="preferencias_color" [(ngModel)]="backgroundColor" value="" (change)="actualizarColor()">
+
+  <label class="w-100 mb-2">Imagen</label>
+  <input class="w-100 mb-4" type="file" name="preferencias_imagen" id="" #fileImage (change)="actualizarImagen(fileImage)">
+
+  <label class="w-100 mb-2">Fuente:</label>
+  <select class="w-100 mb-4" name="preferencias_fuente" id="" [(ngModel)]="font" (change)="actualizarFuente()">
+    <option value="Arial">Arial</option>
+    <option value="Sans-Serif">Sans-Serif</option>
+    <option value="Monospace">Monospace</option>
+  </select>
+</div>

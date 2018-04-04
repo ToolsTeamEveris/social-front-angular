@@ -1,3 +1,4 @@
+import { PersonaServiceService } from './logged/shared/Services/persona-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
@@ -22,6 +23,7 @@ import { LoginActivateGuardService } from './guards/login-activate-guard.service
 import { GoogleLoginModule } from './google-login/google-login.module';
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { environment } from '../environments/environment';
+import { PageUpdateduser } from './logged/shared/Services/updated-user';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { environment } from '../environments/environment';
     AuthService,
     GeolacationService,
     LoginActivateGuardService,
-    LogoutActivateGuardService
+    LogoutActivateGuardService,
+    PersonaServiceService,
+    PageUpdateduser
   ],
   bootstrap: [AppComponent]
 })

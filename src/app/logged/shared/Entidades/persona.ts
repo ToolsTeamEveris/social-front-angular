@@ -4,5 +4,13 @@ export interface Persona {
     surname: string;
     picture: string;
     username?: string;
+    type?: string;
+    userPreferences?: PersonaPreferences;
 }
 
+export interface PersonaPreferences {
+    id: number;
+    backgroundColor: string;
+    backgroundImage: string;
+    fontStyle: string;
+}

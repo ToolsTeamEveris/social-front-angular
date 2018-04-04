@@ -21,9 +21,8 @@ import { MisHistorietasComponent } from './mis-historietas/mis-historietas.compo
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
 
-import { PageUpdateduser } from './shared/Services/updated-user';
-
 import { HistorietasService } from './shared/Services/historietas.service';
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 
 
 @NgModule({
@@ -45,10 +44,10 @@ import { HistorietasService } from './shared/Services/historietas.service';
     MisCosasComponent,
     InfoColegaComponent,
     MisColegasComponent,
-    MisHistorietasComponent
+    MisHistorietasComponent,
+    MenuLateralComponent
   ],
   providers: [
-    PageUpdateduser,
     HistorietasService
   ]
 })
