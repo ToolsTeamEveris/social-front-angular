@@ -4,6 +4,7 @@ import { Persona } from '../shared/Entidades/persona';
 import { Post } from '../shared/Entidades/post';
 import { HttpClient } from '@angular/common/http';
 import { HistorietasService } from '../shared/Services/historietas.service';
+import { PersonaServiceService } from '../shared/Services/persona-service.service';
 
 @Component({
   selector: 'app-publicar-historieta',
@@ -18,7 +19,8 @@ export class PublicarHistorietaComponent implements OnInit {
   date = new Date();
 
   constructor(private geolocation: GeolacationService,
-              private histService: HistorietasService) { }
+              private histService: HistorietasService,
+              private personaService: PersonaServiceService) { }
 
   ngOnInit() {
     this.resetNewPost();
@@ -56,7 +58,7 @@ export class PublicarHistorietaComponent implements OnInit {
   }
 
   publicarHistorieta() {
-    console.log(this.post);
+    
     this.histService.savePost(this.post).subscribe();
     location.reload();
   }

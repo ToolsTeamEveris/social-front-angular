@@ -11,6 +11,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
 import { FormsModule } from '@angular/forms';
 import { Historieta2Component } from './historieta2/historieta2.component';
+import { ContenedorMisHistorietasComponent } from './contenedor-mis-historietas/contenedor-mis-historietas.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { Historieta2Component } from './historieta2/historieta2.component';
   declarations: [
     ContenedorColeguillasComponent,
     ContenedorHistorietasComponent,
+    ContenedorMisHistorietasComponent,
     ColeguillaComponent,
     ColeguillaAddComponent,
     //MisHistorietasComponent,
@@ -33,6 +35,7 @@ import { Historieta2Component } from './historieta2/historieta2.component';
   exports: [
     ContenedorColeguillasComponent,
     ContenedorHistorietasComponent,
+    ContenedorMisHistorietasComponent,
     ColeguillaComponent,
     ColeguillaAddComponent,
     //MisHistorietasComponent,

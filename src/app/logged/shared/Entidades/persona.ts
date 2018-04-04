@@ -1,8 +1,10 @@
 export interface Persona {
-    id: number;
+    id?: number;
     name: string;
     surname: string;
-    picture: string;
+    picture?: string;
     username?: string;
+    password?: string;
+    password2?: string;
 }
 
