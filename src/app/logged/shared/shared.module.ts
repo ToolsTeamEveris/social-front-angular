@@ -9,6 +9,13 @@ import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.componen
 import { HistorietaComponent } from './historieta/historieta.component';
 import { AgmCoreModule } from '@agm/core';
 import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -16,7 +23,8 @@ import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contene
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC2sYQIcXgK0jbglbKQHc_ImsBieJwohHQ',
       libraries: ['places']
-  }),
+    }),
+    TranslateModule.forChild({})
   ],
   declarations: [
     ContenedorColeguillasComponent,
@@ -32,11 +40,20 @@ import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contene
     ColeguillaComponent,
     ColeguillaAddComponent,
     //MisHistorietasComponent,
-    HistorietaComponent
+    HistorietaComponent,
+    TranslateModule
   ],
   providers: [
     PersonaServiceService,
     HistorietasService
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+  constructor(private translate: TranslateService) {
+    translate.addLangs(["es", "en"]);
+    translate.setDefaultLang('es');
+
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
+}
+}

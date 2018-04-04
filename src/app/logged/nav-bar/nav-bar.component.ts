@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../utils/modal/modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,7 +10,8 @@ import { ModalComponent } from '../../utils/modal/modal.component';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor( private modal: NgbModal ) { }
+  constructor( private modal: NgbModal, private translate: TranslateService) { 
+  }
 
   ngOnInit() {
   }

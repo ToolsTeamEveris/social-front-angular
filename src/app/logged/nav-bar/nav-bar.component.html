@@ -1,10 +1,10 @@
 
   <nav class="navbar navbar-light bg-white mt-3 mb-5">
     <img src="../../assets/icono.png" width="30" height="30" alt="">
-    <a class="navbar-brand" [routerLink]="['/logged/historietas']">Mis Historietas</a>
-    <a class="navbar-brand" [routerLink]="['/logged/my']">Mis cosas</a>
-    <a class="navbar-brand" [routerLink]="['/logged/colegas']">Mis colegas</a>
-    <a class="navbar-brand" [routerLink]="['/logged/my']" href="#">Eventos</a>
+    <a class="navbar-brand" [routerLink]="['/logged/historietas']">{{'NAV.HISTORIETAS' | translate }}</a>
+    <a class="navbar-brand" [routerLink]="['/logged/my']">{{'NAV.COSAS' | translate }}</a>
+    <a class="navbar-brand" [routerLink]="['/logged/colegas']">{{'NAV.COLEGAS' | translate }}</a>
+    <a class="navbar-brand" [routerLink]="['/logged/my']" href="#">{{'NAV.EVENTOS' | translate }}</a>
     <a class="navbar-brand" [routerLink]="['/logged/chat']" href="#">Chat</a>
 
     <button class="btn btn-primary" (click)="showModal()">Launch Demo Modal</button>

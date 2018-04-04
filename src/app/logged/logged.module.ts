@@ -21,6 +21,10 @@ import { MisHistorietasComponent } from './mis-historietas/mis-historietas.compo
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { AgmCoreModule } from '@agm/core';
 import { ChatComponent } from './chat/chat.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+
 
 @NgModule({
   imports: [

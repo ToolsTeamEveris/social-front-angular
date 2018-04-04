@@ -1,6 +1,12 @@
 <div style="text-align:center">
   <div class="mt-380 container position-relative">
     <router-outlet></router-outlet>
-    <footer>Copyright - 2018 - Facegular - Tu red social en Angular</footer>
+    <footer>Copyright - 2018 - Facegular - {{ 'HOME.FOOTER' | translate }}</footer>
+    <label>
+        {{ 'HOME.SELECT' | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+        </select>
+      </label>
   </div>
 </div>

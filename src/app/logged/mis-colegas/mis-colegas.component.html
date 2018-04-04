@@ -1,5 +1,5 @@
 <div class="container">
-    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="Buscar un colega..." (keyup)="searchTerm$.next($event.target.value)">
+    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="{{ 'AMIGOS.BUSCAR' | translate }}" (keyup)="searchTerm$.next($event.target.value)">
 </div>
 
 <div class="row">
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-md-7 container" *ngIf="filteredList != null">
-        <h4>Buscando por: {{ searchTerm$ | async }}</h4>
+        <h4>{{ 'AGMIGOS.BUSCANDO_POR' | translate }}: {{ searchTerm$ | async }}</h4>
         <ul *ngIf="filteredList.length > 0; else notResult">
             <li *ngFor="let colega of filteredList" class="mb-3">
                 <app-coleguilla [col]="colega"></app-coleguilla>
@@ -27,7 +27,7 @@
         </ul>
         <ng-template #notResult>
             <p class="alert alert-info">
-                No se han encontrado resultados
+                {{ 'AMIGOS.SIN_RESULTADOS' | translate }}
             </p>
         </ng-template>
         

@@ -22,6 +22,14 @@ import { LoginActivateGuardService } from './guards/login-activate-guard.service
 import { GoogleLoginModule } from './google-login/google-login.module';
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { environment } from '../environments/environment';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader'
+import { Http } from '@angular/http';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -53,7 +61,15 @@ import { environment } from '../environments/environment';
     ),
     BrowserModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      },
+      isolate: false
+  })
   ],
   providers: [
     {
@@ -66,6 +82,9 @@ import { environment } from '../environments/environment';
     LoginActivateGuardService,
     LogoutActivateGuardService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    TranslateModule
+  ]
 })
 export class AppModule { }
