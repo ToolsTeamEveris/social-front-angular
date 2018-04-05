@@ -1,5 +1,5 @@
 <div class="container">
-    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="Buscar un colega..." (keyup)="searchTerm$.next($event.target.value)">
+    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="{{ 'AMIGOS.BUSCAR' | translate }}" (keyup)="searchTerm$.next($event.target.value)">
 </div>
 
 <div class="row">
@@ -49,7 +49,6 @@
         </div>
     </div>
     
-    
     <!--<app-info-colega [col]="selected"></app-info-colega>-->
     <div class="container text-left mt-5" *ngIf="selected">
             <span>Info Coleguilla:</span>
@@ -68,6 +67,4 @@
               </div>
             </div>
           </div>
-          
-          
 </div>

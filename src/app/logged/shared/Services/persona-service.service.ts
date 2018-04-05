@@ -8,9 +8,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import { SERVER } from '../../../app.constants';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
-import { SERVER } from "../../../app.constants";
 import { AuthService } from '../../../auth/services/auth.service';
 
 @Injectable()
@@ -56,8 +56,13 @@ export class PersonaServiceService {
   }
   
   //Obtener Usuario Logueado
-  getLoggedUser(){
-    return Observable.of(this.persona);
+  getLoggedUser(): Observable<Persona> {
+    console.log("getloggeduser");
+    return this.http.get(`${SERVER}person/me`)
+      .catch((resp: HttpErrorResponse) => Observable.throw('Error obteniendo usuario logeado'))
+      .map(loggedUser => {
+        return loggedUser;
+      })
   }
   //Obtiene todas las personas
   getPersons(): Observable<Persona[]>{
