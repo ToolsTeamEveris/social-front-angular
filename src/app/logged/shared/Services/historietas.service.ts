@@ -78,4 +78,20 @@ export class HistorietasService {
     });
   }
 
+  getReportedPost(): Observable<Post[]> {
+    return this.http.get(`${SERVER}post/reported`).map( (posts: Post[]) => posts );
+  }
+
+  confirmReport(id: number): Observable<boolean> {
+    return this.http.delete(`${SERVER}post/reported/${id}`).map(
+      () => true
+    ).catch( () => Observable.of(false) );
+  }
+
+  unreport(id: number) {
+    return this.http.put(`${SERVER}post/unreported/${id}`, '').map(
+      response => true
+    ).catch( () => Observable.of(false) );
+  }
+
 }

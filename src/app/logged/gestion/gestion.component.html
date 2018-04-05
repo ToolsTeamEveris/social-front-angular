@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <!-- <th scope="col">ID</th> -->
+      <th scope="col">User</th>
+      <th scope="col">Content</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="reportedPosts.length > 0">
+    <tr *ngFor="let post of reportedPosts" class="text-left animation fadeIn">
+      <!-- <th scope="row">{{ post.id }}</th> -->
+      <td>{{ post.creator.username }}</td>
+      <td>{{ post.text }}</td>
+      <td>
+        <span class="mr-3 text-danger" (click)="confirmReport(post.id)"><i class="fa fa-trash" aria-hidden="true"></i></span>
+        <span class="text-success" (click)="rejectReport(post.id)"><i class="fa fa-check" aria-hidden="true"></i></span>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div >
+  <div *ngIf="reportedPosts.length < 1" class="alert alert-info animation fadeIn">No hay posts reportados</div>
+  <div (click)="getReportedPosts()" class="btn"><i class="fas fa-sync" aria-hidden="true"></i><br>Actualizar</div>
+</div>

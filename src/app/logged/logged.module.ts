@@ -25,6 +25,7 @@ import { ChatComponent } from './chat/chat.component';
 import { PageUpdateduser } from './shared/Services/updated-user';
 
 import { HistorietasService } from './shared/Services/historietas.service';
+import { GestionComponent } from './gestion/gestion.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { HistorietasService } from './shared/Services/historietas.service';
     InfoColegaComponent,
     MisColegasComponent,
     MisHistorietasComponent,
-    ChatComponent
+    ChatComponent,
+    GestionComponent
   ],
   providers: [
     PageUpdateduser,

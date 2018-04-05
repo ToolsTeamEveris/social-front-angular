@@ -7,6 +7,7 @@ import { MisHistorietasComponent } from './mis-historietas/mis-historietas.compo
 import { MisColegasComponent } from './mis-colegas/mis-colegas.component';
 import { ChatComponent } from './chat/chat.component';
 import { LoginActivateGuardService } from '../guards/login-activate-guard.service';
+import { GestionComponent } from './gestion/gestion.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,11 @@ import { LoginActivateGuardService } from '../guards/login-activate-guard.servic
               path: 'colegas',  
               canActivate: [LoginActivateGuardService],
               component: MisColegasComponent
+            },
+            {
+              path: 'gestion',
+              canActivate: [LoginActivateGuardService],
+              component: GestionComponent
             }
           ]
         },
