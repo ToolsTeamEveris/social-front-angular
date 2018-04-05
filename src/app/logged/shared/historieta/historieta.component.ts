@@ -4,6 +4,8 @@ import { HistorietasService } from '../Services/historietas.service';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { PersonaServiceService } from '../Services/persona-service.service';
+import { Persona } from '../Entidades/persona';
 
 @Component({
   selector: 'app-historieta',
@@ -20,10 +22,18 @@ export class HistorietaComponent implements OnInit {
   likes2 : boolean = false;
   likes3 : boolean = false;
   zoom = 17;
+  myUser : boolean = false;
   
-  constructor(private postService : HistorietasService, private router: Router) { }
+  constructor(private postService : HistorietasService, 
+              private router: Router,
+              private personService: PersonaServiceService) {
+                
+               }
   @Output() refresh: EventEmitter<void> = new EventEmitter();
   ngOnInit() {
+    this.MyPost();
+    console.log('user:', this.personService.user.id);
+    console.log('post:', this.post.creator.id);
   }
 
   showHideMap(){
@@ -34,16 +44,21 @@ export class HistorietaComponent implements OnInit {
     this.edit = !this.edit;
   }
 
+  MyPost () {
+    if (this.personService.user.id === this.post.creator.id) {
+      this.myUser = true;
+    }
+  }
   removePost() {
     this.postService.deletePost(this.post.id).subscribe();
     this.router.navigate(['/logged/historietas2']);
-    //location.reload();
+    
   }
   
   editPost() {
     this.postService.updatePost(this.post).subscribe();
     this.router.navigate(['/logged/historietas2']);
-    //location.reload();
+    
   }
 
   report(){
