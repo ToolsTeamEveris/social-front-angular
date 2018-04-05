@@ -40,6 +40,11 @@ import { GestionComponent } from './gestion/gestion.component';
               path: 'gestion',
               canActivate: [LoginActivateGuardService],
               component: GestionComponent
+            },
+            { 
+              path: 'chat',  
+              canActivate: [LoginActivateGuardService],
+              component: ChatComponent
             }
           ]
         },

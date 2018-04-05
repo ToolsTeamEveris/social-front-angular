@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./historieta.component.css']
 })
 export class HistorietaComponent implements OnInit {
-
   @Input() post: Post;
+  @Output() refresh: EventEmitter<void> = new EventEmitter();
+
   d : Date = new Date();
   map : boolean = false;
   edit : boolean = false;
@@ -21,7 +22,7 @@ export class HistorietaComponent implements OnInit {
   zoom = 17;
   
   constructor(private postService : HistorietasService, private router: Router) { }
-  @Output() refresh: EventEmitter<void> = new EventEmitter();
+
   ngOnInit() {
     this.post.created_at = this.d;
     // this.likes = this.post.tipe == Type.COOL ? true : false;
