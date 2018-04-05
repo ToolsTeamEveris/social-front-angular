@@ -1,0 +1,32 @@
+{
+    "HOME": 
+    {
+        "TITLE": "Hello, welcome to Facegular!",
+        "SELECT": "Change language",
+        "FOOTER": "Your social web in Angular"
+    },
+    "NAV":
+    {
+        "HISTORIETAS": "My posts",
+        "COSAS": "My profile",
+        "COLEGAS": "My friends",
+        "EVENTOS": "Events"
+    },
+    "PUBLICACIONES": 
+    {
+        "PUBLICAR": "Publish post"
+    },
+    "PERFIL":
+    {
+        "NOMBRE": "Name",
+        "APELLIDOS": "Surname",
+        "ACTUALIZAR": "Update my profile",
+        "MODIFICAR": "Modify your avatar"
+    },
+    "AMIGOS": 
+    {
+        "BUSCAR": "Find a friend...",
+        "BUSCANDO_POR": "Finding by",
+        "SIN_RESULTADOS": "No results found"
+    }
+}

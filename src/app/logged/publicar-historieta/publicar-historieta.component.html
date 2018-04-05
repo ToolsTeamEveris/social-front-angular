@@ -8,7 +8,8 @@
     <div class="invalid-feedback">An image is required.</div>
     <img [src]="post.picture" alt="" class="img-thumbnail">
     <button type="button" class="btn btn-primary float-sm-right" (click)="publicarHistorieta()" >
-      Publicar Historieta
+      {{ 'PUBLICACIONES.PUBLICAR' | translate }}
+
     </button>
   </div>
   <div>

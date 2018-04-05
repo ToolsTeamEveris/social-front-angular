@@ -24,6 +24,8 @@
     "@angular/router": "^5.2.0",
     "@angular/service-worker": "^5.2.9",
     "@ng-bootstrap/ng-bootstrap": "^1.0.4",
+    "@ngx-translate/core": "^9.1.1",
+    "@ngx-translate/http-loader": "^3.0.1",
     "@types/fb": "0.0.23",
     "@types/gapi": "0.0.35",
     "@types/gapi.auth2": "0.0.47",

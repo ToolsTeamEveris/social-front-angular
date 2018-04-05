@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { GoogleLoginModule } from '../google-login/google-login.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { GoogleLoginModule } from '../google-login/google-login.module';
         component: RegisterComponent,
       }
     ]),
-    GoogleLoginModule.forRoot('269115313905-om54ugojq4p7huf2d1pmm2a28i8377sl.apps.googleusercontent.com')
+    GoogleLoginModule.forRoot('269115313905-om54ugojq4p7huf2d1pmm2a28i8377sl.apps.googleusercontent.com'),
+    TranslateModule.forChild()
   ],
   declarations: [
     LoginComponent,

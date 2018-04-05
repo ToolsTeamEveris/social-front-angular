@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../utils/modal/modal.component';
+import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor( private modal: NgbModal , private router: Router) { }
+  constructor( private modal: NgbModal, private translate: TranslateService,
+               private router: Router) { 
+  }
 
   ngOnInit() {
   }
