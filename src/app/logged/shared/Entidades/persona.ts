@@ -4,16 +4,13 @@ export interface Persona {
     surname: string;
     picture?: string;
     username?: string;
-<<<<<<< HEAD
     amigo?: boolean;
     pendiente?: boolean;
     solicitado?: boolean;
     password?: string;
     password2?: string;
-=======
     type?: string;
     userPreferences?: PersonaPreferences;
->>>>>>> personalizar_web
 }
 
 export interface PersonaPreferences {

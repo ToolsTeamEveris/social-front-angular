@@ -24,9 +24,9 @@ export class HistorietaComponent implements OnInit {
   @Output() refresh: EventEmitter<void> = new EventEmitter();
   ngOnInit() {
     this.post.created_at = this.d;
-    this.likes = this.post.tipe == Type.COOL ? true : false;
-    this.likes2 = this.post.tipe == Type.DONTCARE ? true : false;
-    this.likes3 = this.post.tipe == Type.ARRG ? true : false;
+    // this.likes = this.post.tipe == Type.COOL ? true : false;
+    // this.likes2 = this.post.tipe == Type.DONTCARE ? true : false;
+    // this.likes3 = this.post.tipe == Type.ARRG ? true : false;
     
   }
 
@@ -62,7 +62,7 @@ export class HistorietaComponent implements OnInit {
   }
 
   cool(){
-    this.post.tipe = Type.COOL // 0 
+    //this.post.tipe = Type.COOL // 0 
     this.postService.updatePost(this.post).subscribe();
     this.likes = !this.likes;
     this.likes2 = false;
@@ -70,7 +70,7 @@ export class HistorietaComponent implements OnInit {
   }
 
   dontcare(){
-    this.post.tipe = Type.DONTCARE // 1
+    //this.post.tipe = Type.DONTCARE // 1
     this.postService.updatePost(this.post).subscribe();
     this.likes2 = !this.likes2;
     this.likes = false;
@@ -78,7 +78,7 @@ export class HistorietaComponent implements OnInit {
   }
 
   arrg(){
-    this.post.tipe = Type.ARRG // 2
+    //this.post.tipe = Type.ARRG // 2
     this.postService.updatePost(this.post).subscribe();
     this.likes3 = !this.likes3;
     this.likes = false;

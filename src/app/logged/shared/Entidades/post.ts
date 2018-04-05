@@ -9,7 +9,6 @@ export interface Post {
     text: string;
     picture: string;
     type?: Type;
-    tipe: number;
     //like?: Like;
     lat?: number;
     lng?: number;
