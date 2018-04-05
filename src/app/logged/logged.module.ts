@@ -25,9 +25,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 
-
 import { HistorietasService } from './shared/Services/historietas.service';
 import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
+import { GestionComponent } from './gestion/gestion.component';
+
 
 
 @NgModule({
@@ -51,7 +52,11 @@ import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
     MisColegasComponent,
     MisHistorietasComponent,
     ChatComponent,
+<<<<<<< HEAD
     MenuLateralComponent
+=======
+    GestionComponent
+>>>>>>> gestion
   ],
   providers: [
     HistorietasService
