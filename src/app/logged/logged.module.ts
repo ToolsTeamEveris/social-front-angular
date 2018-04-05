@@ -46,11 +46,8 @@ import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
     InfoColegaComponent,
     MisColegasComponent,
     MisHistorietasComponent,
-<<<<<<< HEAD
-    ChatComponent
-=======
+    ChatComponent,
     MenuLateralComponent
->>>>>>> personalizar_web
   ],
   providers: [
     HistorietasService
