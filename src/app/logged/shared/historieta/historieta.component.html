@@ -1,0 +1,83 @@
+<div class="card mt-3" style="width: 100%;" id="contenedor_historieta">
+  <img class="card-img-top" [src]="post.picture">
+  <div class="card-body">
+    <div class="float-left mr-4 text-center">
+      <img class="rounded-circle" style="width: 80px; height: 70px;" [src]="post.creator.picture" alt="">
+      <div>
+        <small>{{post.creator.name}} {{post.creator.surname}}</small>
+      </div>
+    </div>
+    <div>
+      <span>{{post.text}}</span>
+    </div>
+    <span *ngIf="post.reported" class="text-danger mr-3 float-right">
+      <i class="fas fa-ban mr-3"></i>Post Reported</span>
+  </div>
+  <div>
+      <button class="btn btn-success mr-3 float-right" (click)="showHideMap()">
+          <i class="fas fa-map-marker-alt mr-3 text-danger"></i>Show Map</button>
+      <button class="btn btn-danger mr-3 float-right" (click)="removePost()">
+        <i class="fas fa-trash-alt mr-3"></i>Delete</button>
+      <button class="btn btn-info mr-3 float-right" (click)="showHideEdit()">
+        <i class="fas fa-edit mr-3"></i>Edit</button>
+        <button class="btn btn-warning mr-3 float-right" (click)="report()">
+          <i class="fas fa-ban mr-3"></i>Report</button>
+  </div>
+  <!-- hidden edit-->
+  <div *ngIf="edit" class="card mt-4">
+    <div class="card-body p-0">
+      <div id="editForm">
+        <form (ngSubmit)="editPost()">
+          <div class="form-group">
+            <label for="text">Edit Text</label>
+            <input type="text" class="form-control" name="title" [(ngModel)]="post.text" required minlength="5" placeholder="Enter the post text"
+                #text="ngModel" [ngClass]="{'is-invalid': text.invalid && text.touched, 'is-valid': text.valid && text.touched}">
+            <div class="invalid-feedback">text is required and at least 5 characters.</div>
+          </div>
+          <button type="submit" class="btn btn-info">Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- ******** -->
+  <div class="card-footer mt-1">
+
+    <span class="ml-3 float-left"> {{post.created_at | date:'dd/MM/yyyy'}}</span>
+    <small>
+      <span *ngIf="likes" class="float-right" (click)="cool()">
+        <i  class="fas fa-hand-peace text-danger mr-3"></i>
+      </span>
+      <span *ngIf="!likes" class="float-right" (click)="cool()">
+        <i  class="fas fa-hand-peace text-primary mr-3"></i>
+      </span>
+
+      <span *ngIf="likes2" class="float-right" (click)="dontcare()">
+        <i class="fas fa-hand-rock text-danger mr-3"></i>
+      </span>
+      <span *ngIf="!likes2" class="float-right" (click)="dontcare()">
+        <i class="fas fa-hand-rock text-primary mr-3"></i>
+      </span>
+      <span *ngIf="likes3" class="float-right" (click)="arrg()">
+        <i class="fas fa-thumbs-down text-danger mr-3"></i>
+      </span>
+      <span *ngIf="!likes3" class="float-right" (click)="arrg()">
+        <i class="fas fa-thumbs-down text-primary mr-3"></i>
+      </span>
+    </small>
+    
+  </div>
+  {{post.type}}
+  <!-- hidden map-->
+  <div *ngIf="map" class="card mt-4">
+    <div class="card-body p-0">
+      <div id="gmap">
+        <agm-map style="height: 30vh; width: 100%;" [zoom]="zoom" [latitude]="post.lat" [longitude]="post.lng">
+          <agm-marker [latitude]="post.lat" [longitude]="post.lng"></agm-marker>
+          <agm-info-window>The post has been created here!!</agm-info-window>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+  <!-- ******** -->
+  
+</div>

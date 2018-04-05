@@ -1,62 +1,93 @@
+import { PersonaServiceService } from './logged/shared/Services/persona-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { PersonaServiceService } from '../app/Services/persona-service.service';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HistorietasService } from '../app/Services/historietas.service';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+
+//Custom modules
+import { LoggedModule } from './logged/logged.module';
+
+//Components
 import { AppComponent } from './app.component';
 
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+//Interceptors
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+//Services
+import { AuthService } from './auth/services/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
-import { VistaUsuarioComponent } from './vista-usuario/vista-usuario.component';
-import { PublicarHistorietaComponent } from './publicar-historieta/publicar-historieta.component';
-import { HistorietaComponent } from './historieta/historieta.component';
-import { ContenedorHistorietasComponent } from './contenedor-historietas/contenedor-historietas.component';
-import { MisHistorietasComponent } from './mis-historietas/mis-historietas.component';
-import { ColeguillaComponent } from './componente_coleguilla/coleguilla.component';
-import { ColeguillaAddComponent } from './coleguilla-add/coleguilla-add.component';
-import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contenedor-coleguillas.component';
-import { MisDatosComponent } from './mis-datos/mis-datos.component';
-import { MisCosasComponent } from './mis-cosas/mis-cosas.component';
-import { BuscadorColeguitasComponent } from './buscador-coleguitas/buscador-coleguitas.component';
-import { InrfoColegaComponent } from './inrfo-colega/inrfo-colega.component';
+import { GeolacationService } from './shared-services/geolacation.service';
 
+import { LogoutActivateGuardService } from './guards/logout-activate-guard.service';
+import { LoginActivateGuardService } from './guards/login-activate-guard.service';
 
+import { GoogleLoginModule } from './google-login/google-login.module';
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { environment } from '../environments/environment';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader'
+import { Http } from '@angular/http';
+import { PageUpdateduser } from './logged/shared/Services/updated-user';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavBarComponent,
-    VistaUsuarioComponent,
-    PublicarHistorietaComponent,
-    VistaUsuarioComponent,
-    HistorietaComponent,
-    ContenedorHistorietasComponent,
-    MisHistorietasComponent,
-    ColeguillaComponent,
-    ColeguillaAddComponent,
-    ContenedorColeguillasComponent,
-    MisDatosComponent,
-    MisCosasComponent,
-    BuscadorColeguitasComponent,
-    InrfoColegaComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     RouterModule.forRoot(
       [
-        {path: 'principal', component: MisHistorietasComponent},
-        {path: 'misCosas', component: MisCosasComponent},
-        {path: '', redirectTo: '/principal', pathMatch: 'full'},
-        {path: '*', redirectTo: '/principal', pathMatch: 'full'}
+        {
+          path: 'auth',
+          canActivate: [LogoutActivateGuardService],
+          loadChildren: './auth/auth.module#AuthModule'
+        },
+        { 
+          path: 'logged', 
+          canActivate: [LoginActivateGuardService],
+          loadChildren: './logged/logged.module#LoggedModule' 
+        },
+        { 
+          path: '**',
+          redirectTo: '/auth/login'
+        },
+        {
+          path: '', 
+          redirectTo: '/auth/login',
+          pathMatch: 'full'
+        }
       ]
-    )
+    ),
+    BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      },
+      isolate: false
+  })
   ],
-  providers: [PersonaServiceService, HistorietasService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    AuthService,
+    GeolacationService,
+    LoginActivateGuardService,
+    LogoutActivateGuardService,
+    PersonaServiceService,
+    PageUpdateduser
+  ],
+  bootstrap: [AppComponent],
+  exports: [
+    TranslateModule
+  ]
 })
 export class AppModule { }

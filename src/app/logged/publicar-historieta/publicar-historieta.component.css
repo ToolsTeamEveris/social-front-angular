@@ -1,0 +1,21 @@
+.panel {
+  margin-bottom: 70px;
+}
+
+#historieta{
+  resize: none;
+}
+
+.btn{
+  background-color: tomato;
+  border-color: white;
+}
+
+.btn:hover {
+  background-color: rgb(255, 0, 0);
+  border-color: white;
+}
+
+.btn:disabled {
+  background-color: grey;
+}

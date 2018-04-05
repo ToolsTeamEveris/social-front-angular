@@ -1,0 +1,32 @@
+{
+    "HOME": 
+    {
+        "TITLE": "Hola, bienvenido a Facegular!",
+        "SELECT": "Cambiar lenguaje",
+        "FOOTER": "Tu red social en Angular"
+    },
+    "NAV":
+    {
+        "HISTORIETAS": "Mis publicaciones",
+        "COSAS": "Mis cosas",
+        "COLEGAS": "Mis colegas",
+        "EVENTOS": "Eventos"
+    },
+    "PUBLICACIONES": 
+    {
+        "PUBLICAR": "Publicar historieta"
+    },
+    "PERFIL":
+    {
+        "NOMBRE": "Nombre",
+        "APELLIDOS": "Apellidos",
+        "ACTUALIZAR": "Actualizar datos de perfil",
+        "MODIFICAR": "Modifica tu foto"
+    },
+    "AMIGOS": 
+    {
+        "BUSCAR": "Buscar un amigo...",
+        "BUSCANDO_POR": "Buscando por",
+        "SIN_RESULTADOS": "No se han encontrado resultados"
+    }
+}

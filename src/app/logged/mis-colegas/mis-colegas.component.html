@@ -1,0 +1,70 @@
+<div class="container">
+    <input class="col-12 pl-1 w-100 my-3 form-control" type="text" placeholder="{{ 'AMIGOS.BUSCAR' | translate }}" (keyup)="searchTerm$.next($event.target.value)">
+</div>
+
+<div class="row">
+
+        <ul class="list-group border-0 col-xs-12 col-md-8 col-xl-6 center-block pr-0">
+            <li  *ngFor="let coleguilla of coleguillasSolicitados" class="list-group-item list-group-item-action" (click)="showDetails(coleguilla)">
+                <app-coleguilla-add
+                    [solicitada]="true" [col]="coleguilla" (cancel)="cancelarSolicitud($event)">
+                </app-coleguilla-add>
+            </li>
+
+            <li  *ngFor="let coleguilla of coleguillasPendientes" class="list-group-item list-group-item-action" (click)="showDetails(coleguilla)">
+                <app-coleguilla-add
+                [solicitada]="false" [col]="coleguilla" (cancel)="rechazarSolicitud($event)" (accept)="aceptarSolicitud($event)">
+
+                </app-coleguilla-add>
+            </li>
+            
+            <li class="list-group-item list-group-item-action" *ngFor="let coleguilla of coleguillas" (click)="showDetails(coleguilla)">
+                <app-coleguilla [col]="coleguilla" (cancel)="eliminarAmigo($event)"></app-coleguilla>
+            </li>
+        </ul>   
+   
+
+    <div class="col-xs-12 col-md-4 col-xl-6">
+        <div *ngIf="filteredList != null">
+    
+            <h4>Buscando por: {{ searchTerm$ | async }}</h4>
+            <ul *ngIf="filteredList.length > 0; else notResult">
+                <li *ngFor="let colega of filteredList" class="mb-3" (click)="showDetails(colega)">
+                    <div class="row contColeguilla mr-0" >
+                        <div class="col-xs-12 col-sm-4 col-md-6 imgColeguilla">
+                            <img class="img-fluid rounded-circle profile-img-xs" src="{{colega.picture}}" alt="perfil">
+                        </div>
+                        <div class="col-xs-12 col-sm-7 col-md-5">
+                            <span>{{ colega.name }} {{ colega.surname }}</span>
+                        </div>
+                    </div>
+                    <!--<app-coleguilla [col]="colega"></app-coleguilla>-->
+                </li>
+            </ul>
+            <ng-template #notResult>
+                <p class="alert alert-info">
+                    No se han encontrado resultados
+                </p>
+            </ng-template>
+        </div>
+    </div>
+    
+    <!--<app-info-colega [col]="selected"></app-info-colega>-->
+    <div class="container text-left mt-5" *ngIf="selected">
+            <span>Info Coleguilla:</span>
+            <div class="container border pt-3 pb-3 row">
+                <span class="col-md-12 mb-3 ml-3">{{selected.name}} {{selected.surname}}</span>
+              <div class="mb-3 ml-3 col-md-6">
+                <img class="rounded-circle profile-img" src="{{selected.picture}}" alt="profile">
+
+                <div class="text-center btn-wrap">
+                    <button *ngIf="selected.solicitado" class="btn btn-warning text-truncate" (click)="cancelar()">Cancelar solicitud</button>
+                    <button *ngIf="selected.pendiente" class="btn btn-success text-truncate" (click)="aceptar()">Aceptar amistad</button>
+                    <button *ngIf="selected.pendiente" class="btn btn-danger text-truncate" (click)="cancelar()">Cancelar</button>
+                    <button *ngIf="selected.amigo" class="btn btn-danger text-truncate" (click)="eliminar()">Eliminar amigo</button>
+                    <button *ngIf="!selected.solicitado && !selected.pendiente && !selected.amigo" class="btn btn-primary" (click)="solicitarAmistad()">Solicitar Amistad</button>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
