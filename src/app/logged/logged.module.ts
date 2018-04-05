@@ -52,11 +52,9 @@ import { GestionComponent } from './gestion/gestion.component';
     MisColegasComponent,
     MisHistorietasComponent,
     ChatComponent,
-<<<<<<< HEAD
-    MenuLateralComponent
-=======
+    MenuLateralComponent,
     GestionComponent
->>>>>>> gestion
+
   ],
   providers: [
     HistorietasService
