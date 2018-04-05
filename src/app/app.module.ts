@@ -1,3 +1,4 @@
+import { PersonaServiceService } from './logged/shared/Services/persona-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
@@ -25,7 +26,7 @@ import { environment } from '../environments/environment';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader'
 import { Http } from '@angular/http';
-
+import { PageUpdateduser } from './logged/shared/Services/updated-user';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -80,7 +81,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthService,
     GeolacationService,
     LoginActivateGuardService,
-    LogoutActivateGuardService
+    LogoutActivateGuardService,
+    PersonaServiceService,
+    PageUpdateduser
   ],
   bootstrap: [AppComponent],
   exports: [

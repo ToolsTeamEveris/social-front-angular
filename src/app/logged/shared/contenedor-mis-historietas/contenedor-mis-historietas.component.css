@@ -1,0 +1,22 @@
+#contenedorH{
+    height: 350px;
+    overflow-y: auto;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #99cc00;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #608000;
+}

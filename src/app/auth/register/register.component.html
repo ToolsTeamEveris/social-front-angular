@@ -3,32 +3,41 @@
 
   <div class="form-group">
     <label for="username">Name:</label>
-    <input type="text" class="form-control" id="username" name="username" [(ngModel)]='username' placeholder="Username" required
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]='person.name' placeholder="Name" required
+      #name='ngModel' [ngClass]="validClasses(name, 'is-valid', 'is-invalid')">
+      <div *ngIf="name.touched && name.invalid" class="invalid-feedback">Campo obligatorio</div>
+  </div>
+  <div class="form-group">
+    <label for="surname">SurName:</label>
+    <input type="text" class="form-control" id="surname" name="surname" [(ngModel)]='person.surname' placeholder="Surname" required
+      #name='ngModel' [ngClass]="validClasses(name, 'is-valid', 'is-invalid')">
+      <div *ngIf="name.touched && name.invalid" class="invalid-feedback">Campo obligatorio</div>
+  </div>
+  <div class="form-group">
+    <label for="username">UserName:</label>
+    <input type="text" class="form-control" id="username" name="username" [(ngModel)]='person.username' placeholder="Username" required
       #name='ngModel' [ngClass]="validClasses(name, 'is-valid', 'is-invalid')">
       <div *ngIf="name.touched && name.invalid" class="invalid-feedback">Campo obligatorio</div>
   </div>
   <div class="form-group">
     <label for="password">Password:</label>
-    <input type="password" class="form-control" id="password" name="password" [(ngModel)]='password' placeholder="Password" required
+    <input type="password" class="form-control" id="password" name="password" [(ngModel)]='person.password' placeholder="Password" required
       #pass='ngModel' [ngClass]="validClasses(pass, 'is-valid', 'is-invalid')">
       <div *ngIf="pass.touched && pass.invalid" class="invalid-feedback">Campo obligatorio</div>
   </div>
   <div class="form-group">
     <label for="password2">Repeat password:</label>
-    <input type="password" class="form-control" id="password2" name="password2" [(ngModel)]='password2' placeholder="Repeat password" required
+    <input type="password" class="form-control" id="password2" name="password2" [(ngModel)]='person.password2' placeholder="Repeat password" required
       #pass2='ngModel' [ngClass]="validClasses(pass2, 'is-valid', 'is-invalid')">
       <div *ngIf="pass2.touched && pass2.invalid" class="invalid-feedback">Campo obligatorio</div>
   </div>
 
-  <!-- <img [src]="imgSrc" alt="" id="imgPreview" class="img-thumbnail">
-      <div class="form-group col-xs-12 col-sm-6">
-      <label for="latitude">Latitude:</label>
-      <input type="text" class="form-control" id="lat" name="lat" [(ngModel)]='lat' placeholder="Geolocalizing..." readonly>
-    </div>
-    <div class="form-group col-xs-12 col-sm-6">
-      <label for="longitude">Longitude:</label>
-      <input type="text" class="form-control" id="lng" name="lng" [(ngModel)]='lng' placeholder="Geolocalizing..." readonly>
-    </div> -->
+  <input type="file" class="form-control" ngModel name="image" (change)="changeImage(imageInput)" #image="ngModel" #imageInput
+      [ngClass]="{'is-invalid': imageInput.files.length === 0 && image.touched,
+              'is-valid': imageInput.files.length > 0 && image.touched}">
+              <div class="invalid-feedback">An image is required.</div>
+    <img [src]="person.picture" alt="" class="img-thumbnail">
+
   <p class="text-danger" id="errorInfo">{{errorMsg}}</p>
   <a class="btn btn-secondary" href="login.html" role="button">Go back</a>
   <button type="submit" class="btn btn-primary">Create account</button>

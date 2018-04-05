@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../utils/modal/modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor( private modal: NgbModal, private translate: TranslateService) { 
+  constructor( private modal: NgbModal, private translate: TranslateService,
+               private router: Router) { 
   }
 
   ngOnInit() {
@@ -27,6 +29,11 @@ export class NavBarComponent implements OnInit {
         modalRef.result
           .then( ( response ) =>  console.log(`Response ${response}`) )
           .catch(() => console.log('Modal closed'));
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
   }
 
 }

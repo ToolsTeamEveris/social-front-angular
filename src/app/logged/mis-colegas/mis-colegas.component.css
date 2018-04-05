@@ -28,3 +28,12 @@ li {
     background: #608000;
   }
   
+.profile-img {
+  max-width: 80px;
+  background-color: black;
+}
+
+.profile-img-xs {
+  max-width: 45px;
+  background-color: black;  
+}

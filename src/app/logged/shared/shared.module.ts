@@ -12,6 +12,9 @@ import { ContenedorColeguillasComponent } from './contenedor-coleguillas/contene
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule } from '@angular/forms';
+import { Historieta2Component } from './historieta2/historieta2.component';
+import { ContenedorMisHistorietasComponent } from './contenedor-mis-historietas/contenedor-mis-historietas.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC2sYQIcXgK0jbglbKQHc_ImsBieJwohHQ',
       libraries: ['places']
@@ -29,14 +33,17 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     ContenedorColeguillasComponent,
     ContenedorHistorietasComponent,
+    ContenedorMisHistorietasComponent,
     ColeguillaComponent,
     ColeguillaAddComponent,
     //MisHistorietasComponent,
-    HistorietaComponent
+    HistorietaComponent,
+    Historieta2Component
   ],
   exports: [
     ContenedorColeguillasComponent,
     ContenedorHistorietasComponent,
+    ContenedorMisHistorietasComponent,
     ColeguillaComponent,
     ColeguillaAddComponent,
     //MisHistorietasComponent,

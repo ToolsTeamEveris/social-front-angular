@@ -1,25 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../Entidades/post';
 import { HistorietasService } from '../Services/historietas.service';
+import { PersonaServiceService } from '../Services/persona-service.service';
 
 @Component({
-  selector: 'app-contenedor-historietas',
-  templateUrl: './contenedor-historietas.component.html',
-  styleUrls: ['./contenedor-historietas.component.css']
+  selector: 'app-contenedor-mis-historietas',
+  templateUrl: './contenedor-mis-historietas.component.html',
+  styleUrls: ['./contenedor-mis-historietas.component.css']
 })
-export class ContenedorHistorietasComponent implements OnInit {
+export class ContenedorMisHistorietasComponent implements OnInit {
 
   // @Input() historietas: Post[];
   historietas: Post[] = [];
   //@Input() post: Post;
-  constructor(private histService: HistorietasService) { }
+  constructor(private histService: HistorietasService, private personService: PersonaServiceService) { }
  
   ngOnInit() {
-    this.getAllPost();
+    this.getMyPost();
   }
 
-  getAllPost() {
-    this.histService.getAllPost().subscribe(res => {
+  getMyPost() {
+    
+    this.histService.getMyPost().subscribe(res => {
       this.historietas = res; 
       console.log(res);
     },

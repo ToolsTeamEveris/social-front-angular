@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import { SERVER } from '../../app.constants';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { Persona } from '../../logged/shared/Entidades/persona';
 
 @Injectable()
 export class AuthService {
@@ -27,9 +27,9 @@ export class AuthService {
       })
   }
 
-  register(username: string, password: string): Observable<boolean> {
+  register(person: Persona): Observable<boolean> {
     return this.http
-      .post(`${SERVER}auth/register`, { username, password })
+      .post(`${SERVER}auth/register`, person)
       .catch((resp: HttpErrorResponse) => Observable.throw('Error registrando usuario'))
       .map(resp => {
         console.log(resp);
@@ -42,15 +42,12 @@ export class AuthService {
     if (this.logged) {
       return Observable.of(true);
     } else if (localStorage.getItem('token')) {
-      /*return this.http.get<{ok: boolean}>(`${this.urlServer}auth/token`)
+      return this.http.get<{ok: boolean}>(`${SERVER}person/0`)
         .map( response => {
-          if (response.ok) {
-            this.logged = true;
-            return true;
-          }
-          return false;
-        });*/
-        return Observable.of(true);
+          this.logged = true;
+          return true;
+        })
+        .catch( () => Observable.of(false) );
     } else {
       return Observable.of(false);
     }

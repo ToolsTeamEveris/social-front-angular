@@ -26,6 +26,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 
 
+import { HistorietasService } from './shared/Services/historietas.service';
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
+
+
 @NgModule({
   imports: [
     LoggedRoutingModule,
@@ -46,9 +50,14 @@ import { HttpClient } from '@angular/common/http';
     InfoColegaComponent,
     MisColegasComponent,
     MisHistorietasComponent,
+<<<<<<< HEAD
     ChatComponent
+=======
+    MenuLateralComponent
+>>>>>>> personalizar_web
   ],
   providers: [
+    HistorietasService
   ]
 })
 export class LoggedModule { }

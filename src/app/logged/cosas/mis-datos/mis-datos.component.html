@@ -2,14 +2,16 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label" id="lblNombre">{{ 'PERFIL.NOMBRE' | translate }}:</label>
     <div class="col-sm-9">
-      <input class="form-control text-success" formControlName="name" for="lblNombre" (keyup)="updateName()" placeholder="Modifica tu nombre">
+      <input class="form-control text-success" formControlName="name" id="lblNombre" (keyup)="updateName()" 
+            value="" placeholder="Modifica tu nombre">
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label" id="lblApellidos">{{ 'PERFIL.APELLIDOS' | translate }}:</label>
     <div class="col-sm-9">
-      <input class="form-control text-success" formControlName="surname" for="lblNombre" (keyup)="updateSurname()" placeholder="Modifica tu apellido">
+      <input class="form-control text-success" formControlName="surname" id="lblApellidos" (keyup)="updateSurname()" 
+            value="" placeholder="Modifica tu apellido">
     </div>
   </div>
 

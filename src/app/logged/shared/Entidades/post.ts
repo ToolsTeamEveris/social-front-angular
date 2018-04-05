@@ -1,13 +1,22 @@
 import { Persona } from '../Entidades/persona';
-enum Like {Mola, PSSST, PUFFF}
+export enum Type {COOL, DONTCARE, ARRG}
 
 export interface Post {
-    user: Persona;
+    id?: number;
+    user?: Persona;
     creator?: Persona;
-    created_at: Date;
-    content: string;
-    like: string;
+    created_at: Date | String;
+    text: string;
+    picture: string;
+    type?: Type;
+    tipe: number;
+    //like?: Like;
     lat?: number;
     lng?: number;
+    reported?: boolean;
+    likes?: any;
+    like?: Type;
+    likeMe?: boolean;
+
     
 }
