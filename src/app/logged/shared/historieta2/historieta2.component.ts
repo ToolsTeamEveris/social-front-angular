@@ -11,7 +11,8 @@ export class Historieta2Component implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/logged/historietas']);
+    setTimeout(() => {
+      this.router.navigate(['/logged/historietas']);
+    }, 0);   
   }
-
 }

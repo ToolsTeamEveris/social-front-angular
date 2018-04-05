@@ -37,7 +37,7 @@ export class PublicarHistorietaComponent implements OnInit {
     }
     this.post = {
       creator: this.persona,
-      created_at: '',
+      creationDate: '',
       text: '',
       picture:'',
       lat: 0,
@@ -59,7 +59,7 @@ export class PublicarHistorietaComponent implements OnInit {
   publicarHistorieta() {
     
     this.histService.savePost(this.post).subscribe();
-    location.reload();
+    //location.reload();
   }
 
   //Convert image to base64

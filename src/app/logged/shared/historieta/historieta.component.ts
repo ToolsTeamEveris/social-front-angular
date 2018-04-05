@@ -3,6 +3,7 @@ import { Post, Type } from '../Entidades/post';
 import { HistorietasService } from '../Services/historietas.service';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-historieta',
@@ -23,11 +24,6 @@ export class HistorietaComponent implements OnInit {
   constructor(private postService : HistorietasService, private router: Router) { }
   @Output() refresh: EventEmitter<void> = new EventEmitter();
   ngOnInit() {
-    this.post.created_at = this.d;
-    // this.likes = this.post.tipe == Type.COOL ? true : false;
-    // this.likes2 = this.post.tipe == Type.DONTCARE ? true : false;
-    // this.likes3 = this.post.tipe == Type.ARRG ? true : false;
-    
   }
 
   showHideMap(){
