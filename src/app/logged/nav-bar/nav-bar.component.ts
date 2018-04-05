@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../utils/modal/modal.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { PersonaServiceService } from '../shared/Services/persona-service.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,12 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  isAdmin: boolean = false;
 
   constructor( private modal: NgbModal, private translate: TranslateService,
-               private router: Router) { 
+               private router: Router, private personaService: PersonaServiceService) { 
   }
 
   ngOnInit() {
+    this.personaService.$isAdmin.subscribe(
+      response => this.isAdmin = response
+    )
   }
 
   showModal() {

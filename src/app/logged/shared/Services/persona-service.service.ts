@@ -1,5 +1,5 @@
 import { Persona } from './../Entidades/persona';
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -22,17 +22,15 @@ export class PersonaServiceService {
     surname: 'Abadia',
     picture: 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg'
   };
-  user: Persona = {
-    id: 0,
-    name: '',
-    surname: '',
-    picture: '',
-  };
+  user: Persona;
+  @Output() $isAdmin = new EventEmitter<boolean>();
 
   personas: Persona[] = [];
 
   constructor( private http:HttpClient, private auth: AuthService ) {
     this.http.get(`${SERVER}person/me`).subscribe( (response: Persona) => {
+      if (response.type == 'ADMIN') this.$isAdmin.emit(true);
+
       this.user = response
       this.user.picture = '/assets/user.png';
     });
