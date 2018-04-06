@@ -5,6 +5,7 @@ import { Post } from '../shared/Entidades/post';
 import { HttpClient } from '@angular/common/http';
 import { HistorietasService } from '../shared/Services/historietas.service';
 import { PersonaServiceService } from '../shared/Services/persona-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publicar-historieta',
@@ -20,7 +21,8 @@ export class PublicarHistorietaComponent implements OnInit {
 
   constructor(private geolocation: GeolacationService,
               private histService: HistorietasService,
-              private personaService: PersonaServiceService) { }
+              private personaService: PersonaServiceService,
+              private router: Router) { }
 
   ngOnInit() {
     this.resetNewPost();
@@ -37,7 +39,7 @@ export class PublicarHistorietaComponent implements OnInit {
     }
     this.post = {
       creator: this.persona,
-      created_at: '',
+      creationDate: '',
       text: '',
       picture:'',
       lat: 0,
@@ -59,7 +61,7 @@ export class PublicarHistorietaComponent implements OnInit {
   publicarHistorieta() {
     
     this.histService.savePost(this.post).subscribe();
-    location.reload();
+    this.router.navigate(['/logged/historietas2']);
   }
 
   //Convert image to base64

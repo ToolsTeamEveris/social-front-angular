@@ -32,7 +32,7 @@ export class PersonaServiceService {
       if (response.type == 'ADMIN') this.$isAdmin.emit(true);
 
       this.user = response
-      this.user.picture = '/assets/user.png';
+      this.user.picture = this.user.picture ? this.user.picture : '/assets/user.png';
     });
     
     let person;
@@ -83,7 +83,7 @@ export class PersonaServiceService {
     if (term.trim() == '') return Observable.of(null);
 
     return this.http.get(`${SERVER}person/search/${term}`).map( (response:any) => {
-      response.forEach( p => p.picture = '/assets/user.png')
+      response.forEach( p => p.picture = p.picture ? p.picture : '/assets/user.png')
       return response;
     });
   }
@@ -114,9 +114,9 @@ export class PersonaServiceService {
         }
       })
 
-      relations.amigos.map( p => p.picture = '/assets/user.png');
-      relations.solicitados.map( p => p.picture = '/assets/user.png');
-      relations.pendientes.map( p => p.picture = '/assets/user.png');
+      relations.amigos.map( p => p.picture = p.picture ? p.picture : '/assets/user.png');
+      relations.solicitados.map( p => p.picture = p.picture ? p.picture : '/assets/user.png');
+      relations.pendientes.map( p => p.picture = p.picture ? p.picture : '/assets/user.png');
 
       return relations;
     })

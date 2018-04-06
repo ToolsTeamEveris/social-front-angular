@@ -32,8 +32,6 @@ export class HistorietasService {
         p.like = typeLike;
 
         console.log(post);
-        p.creator.picture = 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg';
-        //p.creator.picture = `${IMG_USER_PATH}${p.creator.picture}`;
         return p;
       })
       return post;
@@ -45,8 +43,6 @@ export class HistorietasService {
   getMyPost(): Observable<Post []> {
     return this.http.get(`${SERVER}post/mine`).map((post: Post[]) => {
       post.map(p => {
-        p.creator.picture = 'https://3.bp.blogspot.com/-MFEE2ap2mqA/VB1NwuQ2oiI/AAAAAAAAAQU/U2s0JLanKGg/s1600/franki3.jpg';
-        //p.creator.picture = `${IMG_USER_PATH}${p.creator.picture}`;
         return p;
       })
       return post;

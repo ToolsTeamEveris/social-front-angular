@@ -5,7 +5,7 @@ export interface Post {
     id?: number;
     user?: Persona;
     creator?: Persona;
-    created_at: Date | String;
+    creationDate: Date | String;
     text: string;
     picture: string;
     type?: Type;
