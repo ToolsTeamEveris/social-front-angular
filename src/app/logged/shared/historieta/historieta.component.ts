@@ -24,7 +24,7 @@ export class HistorietaComponent implements OnInit {
   likes3 : boolean = false;
   zoom = 17;
   myUser : boolean = false;
-  
+  ""
   constructor(private postService : HistorietasService, 
               private router: Router,
               private personService: PersonaServiceService) {

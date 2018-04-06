@@ -10,11 +10,20 @@
         "HISTORIETAS": "Mis publicaciones",
         "COSAS": "Mis cosas",
         "COLEGAS": "Mis colegas",
-        "EVENTOS": "Eventos"
+        "EVENTOS": "Eventos",
+        "GESTION": "Gestión",
+        "LOGOUT": "Cerrar sesión"
     },
     "PUBLICACIONES": 
     {
-        "PUBLICAR": "Publicar historieta"
+        "PUBLICAR": "Publicar historieta",
+        "REPORTADO": "Publicación reportada",
+        "MAPA": "Mostrar mapa",
+        "ELIMINAR": "Eliminar",
+        "EDITAR": "Editar",
+        "REPORTAR": "Reportar",
+        "INFO-INVALIDO": "El texto es requerido y debe tener al menos 5 caracteres",
+        "INFO-CREADO": "La publicación ha sido creada aquí"
     },
     "PERFIL":
     {
@@ -28,5 +37,13 @@
         "BUSCAR": "Buscar un amigo...",
         "BUSCANDO_POR": "Buscando por",
         "SIN_RESULTADOS": "No se han encontrado resultados"
+    },
+    "GESTION":
+    {
+        "USUARIO": "Usuario",
+        "CONTENIDO": "Contenido",
+        "ACCIONES": "Acciones",
+        "INFO-NOPOSTS": "No hay publicaciones reportadas",
+        "ACTUALIZAR": "Actualizar"
     }
 }

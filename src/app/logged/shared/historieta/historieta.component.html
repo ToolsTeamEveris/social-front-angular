@@ -11,17 +11,17 @@
       <span>{{post.text}}</span>
     </div>
     <span *ngIf="post.reported" class="text-danger mr-3 float-right">
-      <i class="fas fa-ban mr-3"></i>Post Reported</span>
+      <i class="fas fa-ban mr-3"></i>{{ 'PUBLICACIONES.REPORTADO' | translate }}</span>
   </div>
   <div>
       <button class="btn btn-success mr-3 float-right" (click)="showHideMap()">
-          <i class="fas fa-map-marker-alt mr-3 text-danger"></i>Show Map</button>
+          <i class="fas fa-map-marker-alt mr-3 text-danger"></i>{{ 'PUBLICACIONES.MAPA' | translate }}</button>
       <button *ngIf="myUser" class="btn btn-danger mr-3 float-right" (click)="removePost()">
-        <i class="fas fa-trash-alt mr-3"></i>Delete</button>
+        <i class="fas fa-trash-alt mr-3"></i>{{ 'PUBLICACIONES.ELIMINAR' | translate }}</button>
       <button *ngIf="myUser" class="btn btn-info mr-3 float-right" (click)="showHideEdit()">
-        <i class="fas fa-edit mr-3"></i>Edit</button>
+        <i class="fas fa-edit mr-3"></i>{{ 'PUBLICACIONES.EDITAR' | translate }}</button>
         <button class="btn btn-warning mr-3 float-right" (click)="report()">
-          <i class="fas fa-ban mr-3"></i>Report</button>
+          <i class="fas fa-ban mr-3"></i>{{ 'PUBLICACIONES.REPORTAR' | translate }}</button>
   </div>
   <!-- hidden edit-->
   <div *ngIf="edit" class="card mt-4">
@@ -32,9 +32,9 @@
             <label for="text">Edit Text</label>
             <input type="text" class="form-control" name="title" [(ngModel)]="post.text" required minlength="5" placeholder="Enter the post text"
                 #text="ngModel" [ngClass]="{'is-invalid': text.invalid && text.touched, 'is-valid': text.valid && text.touched}">
-            <div class="invalid-feedback">text is required and at least 5 characters.</div>
+            <div class="invalid-feedback">{{ 'PUBLICACIONES.INFO-INVALIDO' | translate }}</div>
           </div>
-          <button type="submit" class="btn btn-info">Edit</button>
+          <button type="submit" class="btn btn-info">{{ 'PUBLICACIONES.EDITAR' | translate }}</button>
         </form>
       </div>
     </div>
@@ -71,7 +71,7 @@
       <div id="gmap">
         <agm-map style="height: 30vh; width: 100%;" [zoom]="zoom" [latitude]="post.lat" [longitude]="post.lng">
           <agm-marker [latitude]="post.lat" [longitude]="post.lng"></agm-marker>
-          <agm-info-window>The post has been created here!!</agm-info-window>
+          <agm-info-window>{{ 'PUBLICACIONES.INFO-CREADO' | translate }}</agm-info-window>
         </agm-map>
       </div>
     </div>

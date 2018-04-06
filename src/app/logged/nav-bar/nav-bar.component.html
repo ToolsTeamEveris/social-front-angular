@@ -6,8 +6,8 @@
     <a class="navbar-brand" [routerLink]="['/logged/colegas']">{{'NAV.COLEGAS' | translate }}</a>
     <a class="navbar-brand" [routerLink]="['/logged/my']" href="#">{{'NAV.EVENTOS' | translate }}</a>
     <a class="navbar-brand" [routerLink]="['/logged/chat']" href="#">Chat</a>
-    <a class="navbar-brand" (click)="logout()" href="#">Logout</a>
-    <a *ngIf="isAdmin" class="navbar-brand" [routerLink]="['/logged/gestion']">Gestion</a>
+    <a *ngIf="isAdmin" class="navbar-brand" [routerLink]="['/logged/gestion']">{{ 'NAV.GESTION' | translate }}</a>
+    <a class="navbar-brand" (click)="logout()" href="#">{{ 'NAV.LOGOUT' | translate }}</a>
 
   </nav>
 

@@ -10,11 +10,20 @@
         "HISTORIETAS": "My posts",
         "COSAS": "My profile",
         "COLEGAS": "My friends",
-        "EVENTOS": "Events"
+        "EVENTOS": "Events",
+        "GESTION": "Management",
+        "LOGOUT": "Logout"
     },
     "PUBLICACIONES": 
     {
-        "PUBLICAR": "Publish post"
+        "PUBLICAR": "Publish post",
+        "REPORTADO": "Post reported",
+        "MAPA": "Show Map",
+        "ELIMINAR": "Delete",
+        "EDITAR": "Edit",
+        "REPORTAR": "Report",
+        "INFO-INVALIDO": "Text is required and at least 5 characters",
+        "INFO-CREADO": "Post has been created here"
     },
     "PERFIL":
     {
@@ -28,5 +37,13 @@
         "BUSCAR": "Find a friend...",
         "BUSCANDO_POR": "Finding by",
         "SIN_RESULTADOS": "No results found"
+    },
+    "GESTION":
+    {
+        "USUARIO": "User",
+        "CONTENIDO": "Content",
+        "ACCIONES": "Actions",
+        "INFO-NOPOSTS": "There are no posts reported",
+        "ACTUALIZAR": "Update"
     }
 }
