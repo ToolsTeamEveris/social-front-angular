@@ -4,13 +4,13 @@
     </h1>
     <div class="container" style="background-color: white; height: 200px;">
         <div *ngFor="let msg of messages">
-            {{msg}}
+            {{msg.user}} -- {{msg.text}}
         </div>
     </div>
   </div>
   <div class="container">
     <div class="send-button">
-      <input id="input" type="text" [(ngModel)]="message">
+      <input id="input" type="text" [(ngModel)]="message.text">
       <button (click)="sendMessage()">Send</button>
     </div>
   

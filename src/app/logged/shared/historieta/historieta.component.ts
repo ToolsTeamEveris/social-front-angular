@@ -14,8 +14,9 @@ import { Like } from '../Entidades/like';
   styleUrls: ['./historieta.component.css']
 })
 export class HistorietaComponent implements OnInit {
-
   @Input() post: Post;
+  @Output() refresh: EventEmitter<void> = new EventEmitter();
+
   d : Date = new Date();
   map : boolean = false;
   edit : boolean = false;
@@ -24,13 +25,13 @@ export class HistorietaComponent implements OnInit {
   likes3 : boolean = false;
   zoom = 17;
   myUser : boolean = false;
-  
+  ""
   constructor(private postService : HistorietasService, 
               private router: Router,
               private personService: PersonaServiceService) {
                 
                }
-  @Output() refresh: EventEmitter<void> = new EventEmitter();
+
   ngOnInit() {
     this.MyPost();
     console.log('user:', this.personService.user.id);

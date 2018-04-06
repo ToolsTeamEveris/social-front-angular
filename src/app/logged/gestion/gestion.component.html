@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <!-- <th scope="col">ID</th> -->
-      <th scope="col">User</th>
-      <th scope="col">Content</th>
-      <th scope="col">Actions</th>
+      <th scope="col">{{ 'GESTION.USUARIO' | translate }}</th>
+      <th scope="col">{{ 'GESTION.CONTENIDO' | translate }}</th>
+      <th scope="col">{{ 'GESTION.ACCIONES' | translate }}</th>
     </tr>
   </thead>
   <tbody *ngIf="reportedPosts.length > 0">
@@ -21,6 +21,6 @@
   </tbody>
 </table>
 <div >
-  <div *ngIf="reportedPosts.length < 1" class="alert alert-info animation fadeIn">No hay posts reportados</div>
-  <div (click)="getReportedPosts()" class="btn"><i class="fas fa-sync" aria-hidden="true"></i><br>Actualizar</div>
+  <div *ngIf="reportedPosts.length < 1" class="alert alert-info animation fadeIn">{{ 'GESTION.INFO-NOPOSTS' | translate }}</div>
+  <div (click)="getReportedPosts()" class="btn"><i class="fas fa-sync" aria-hidden="true"></i><br>{{ 'GESTION.ACTUALIZAR' | translate }}</div>
 </div>

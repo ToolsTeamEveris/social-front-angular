@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
+import { PersonaServiceService } from '../shared/Services/persona-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,11 +11,14 @@ import * as Stomp from 'stompjs';
 export class ChatComponent implements OnInit {
   title = 'WebSockets chat';
   private serverUrl = 'http://localhost:8080/socket'
-  messages: string[];
-  message: string = '';
+  messages;
+  message = {
+    text: '',
+    user: ''
+  };
   private stompClient;
 
-  constructor() { 
+  constructor(private personaService: PersonaServiceService ) { 
     this.initializeWebSocketConnection();
   }
 
@@ -29,17 +33,17 @@ export class ChatComponent implements OnInit {
     this.stompClient.connect({}, frame => {
       that.stompClient.subscribe("/chat", (message) => {
         if(message.body) {
-          console.log(this.messages);
-          this.messages.push(message.body);
+          this.message.text = message.body;
+          this.message.user = this.personaService.user.name;
+          this.messages.push(this.message);
         }
       });
     });
   }
 
   sendMessage() {
-    console.log(this.message);
-    this.stompClient.send("/app/send/message", {}, this.message);
-    this.message = '';
+    this.stompClient.send("/app/send/message", {}, this.message.text);
+    this.message.text = '';
   }
 
 }
