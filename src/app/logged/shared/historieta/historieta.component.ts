@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { PersonaServiceService } from '../Services/persona-service.service';
 import { Persona } from '../Entidades/persona';
+import { Like } from '../Entidades/like';
 
 @Component({
   selector: 'app-historieta',
@@ -73,26 +74,47 @@ export class HistorietaComponent implements OnInit {
   }
 
   cool(){
-    //this.post.tipe = Type.COOL // 0 
-    this.postService.updatePost(this.post).subscribe();
     this.likes = !this.likes;
+    if (this.likes) {
+      this.post.likes.push(
+        { type: Type.COOL }
+      )
+      this.postService.addLike(this.post).subscribe();
+    }
+    else {
+      this.postService.removeLike(this.post).subscribe();
+    }
     this.likes2 = false;
     this.likes3 = false;
   }
 
   dontcare(){
-    //this.post.tipe = Type.DONTCARE // 1
-    this.postService.updatePost(this.post).subscribe();
     this.likes2 = !this.likes2;
+    if (this.likes) {
+      this.post.likes.push(
+        { type: Type.DONTCARE }
+      )
+      this.postService.addLike(this.post).subscribe();
+    }
+    else {
+      this.postService.removeLike(this.post).subscribe();
+    }
     this.likes = false;
-    this.likes3 = false;     
+    this.likes3 = false;
   }
 
   arrg(){
-    //this.post.tipe = Type.ARRG // 2
-    this.postService.updatePost(this.post).subscribe();
     this.likes3 = !this.likes3;
-    this.likes = false;
+    if (this.likes) {
+      this.post.likes.push(
+        { type: Type.ARRG }
+      )
+      this.postService.addLike(this.post).subscribe();
+    }
+    else {
+      this.postService.removeLike(this.post).subscribe();
+    }
     this.likes2 = false;
+    this.likes = false;
   }
 }

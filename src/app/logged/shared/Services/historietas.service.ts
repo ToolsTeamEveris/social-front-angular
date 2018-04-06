@@ -20,22 +20,14 @@ export class HistorietasService {
   getAllPost(): Observable<Post[]> {
     return this.http.get(`${SERVER}post`).map((post: Post[]) => {
       post.map(p => {
-        let isLike = false;
-        let typeLike = Type.COOL;
-        p.likes.map( like => {
-          if (like.creator.id == this.personaService.user.id) {
-            isLike = true;
-            typeLike = like.type;
-          }
-        });
-        p.likeMe = isLike;
-        p.like = typeLike;
-
+        // p.likeMe = false;
+        //   if (p.likes.creator.id == this.personaService.user.id) {
+        //     p.likeMe = true;         
+        //   }      
         console.log(post);
         return p;
       })
       return post;
-
     }).catch(error => Observable.throw(error));
   }
 
@@ -107,14 +99,24 @@ export class HistorietasService {
       throw(error)
     });
   }
-
-  //AddLike
-  addType(post: Post) : Observable<{}> {
-    return this.http.put(`${SERVER}post/${post.id}/tipe`, post)
+  
+  //Add like to array of Likes
+  addLike(post: Post) {
+    return this.http.post(`${SERVER}post/${post.id}/like`, post.likes)
     .catch(error => {
       throw(error)
     });
   }
+  
+  
+  //Remove like of array of Likes
+  removeLike(post: Post) {
+    return this.http.delete(`${SERVER}post/${post.id}/unlike`)
+    .catch(error => {
+      throw(error)
+    });
+  }
+  
 
   //Delete post
   deletePost(id: number) {
