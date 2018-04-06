@@ -76,10 +76,9 @@ export class HistorietaComponent implements OnInit {
   cool(){
     this.likes = !this.likes;
     if (this.likes) {
-      this.post.likes.push(
-        { type: Type.COOL }
-      )
-      this.postService.addLike(this.post).subscribe();
+      let tempLike = { type: Type.COOL };
+      this.post.likes.push( tempLike);
+      this.postService.addLike(this.post, tempLike).subscribe();
     }
     else {
       this.postService.removeLike(this.post).subscribe();

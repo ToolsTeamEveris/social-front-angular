@@ -9,6 +9,7 @@ import 'rxjs/add/observable/throw';
 import { HttpClient } from '@angular/common/http';
 import { SERVER, IMG_USER_PATH } from '../../../app.constants';
 import { PersonaServiceService } from './persona-service.service';
+import { Like } from '../Entidades/like';
 
 @Injectable()
 export class HistorietasService {
@@ -101,8 +102,8 @@ export class HistorietasService {
   }
   
   //Add like to array of Likes
-  addLike(post: Post) {
-    return this.http.post(`${SERVER}post/${post.id}/like`, post.likes)
+  addLike(post: Post, tempLike : Like) {
+    return this.http.post(`${SERVER}post/${post.id}/like`, tempLike)
     .catch(error => {
       throw(error)
     });
